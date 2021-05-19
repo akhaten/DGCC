@@ -7,11 +7,13 @@ set(NAME_LIB "DGCC")
 add_subdirectory(docs)
 
 include_directories(
-  headers/Stack/)
+  headers/Collection/)
 
 add_library(${NAME_LIB}
-  headers/Stack/stack.h
-  src/Stack/stack.c)
+  headers/Collection/stack.h
+  src/Collection/stack.c
+  headers/Collection/list.h
+  src/Collection/list.c)
 
 target_include_directories(${NAME_LIB} PUBLIC
   "${CMAKE_CURRENT_SOURCE_DIR}/headers"
