@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <stdbool.h>
-
 #include "list.h"
 
 #define LIST_INIT 100
@@ -70,12 +65,9 @@ unsigned int list_size(const List l){
   return l->size;
 }
 
-int list_isEmpty(const List l){
+bool list_isEmpty(const List l){
   assert(l != NULL);
-  int isEmpty = 0;
-  if(l->size == 0)
-    isEmpty = 1;
-  return isEmpty;
+  return !l->size;
 }
 
 List list_add(List l, void *e){
@@ -120,7 +112,7 @@ List list_remove(List l, const unsigned int index){
 }
 
 List list_insert(List l, const unsigned int index, void *e){
-  assert( (l != NULL) && (0 <= index) && (index <= list_size(l)) && (e != NULL) );
+  assert( (l != NULL) && (e != NULL) && (0 <= index) && (index <= list_size(l)));
   
   Node cur = l->sentinel->next;
   
@@ -140,7 +132,6 @@ List list_insert(List l, const unsigned int index, void *e){
   new->previous->next = new;
   new->next->previous = new;
  
-  
   ++l->size;
   
   return l;
@@ -186,7 +177,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
 
 }
 
-int list_exists(const List l, int predicate(void *e)){
+int list_exists(const List l, bool predicate(void *e)){
   assert(l != NULL);
 
   Node cur = l->sentinel->next;
@@ -201,7 +192,7 @@ int list_exists(const List l, int predicate(void *e)){
 
 }
 
-int list_forall(const List l, int predicate(void *e)){
+int list_forall(const List l, bool predicate(void *e)){
   
   assert(l != NULL);
 

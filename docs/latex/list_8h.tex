@@ -1,0 +1,317 @@
+\hypertarget{list_8h}{}\doxysection{Collection/list.h File Reference}
+\label{list_8h}\index{Collection/list.h@{Collection/list.h}}
+{\ttfamily \#include \char`\"{}includes.\+h\char`\"{}}\newline
+Include dependency graph for list.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{list_8h_a7c1dfbac97e8f47bb6749d0026d9cd5b}\label{list_8h_a7c1dfbac97e8f47bb6749d0026d9cd5b}} 
+typedef struct s\+\_\+\+List $\ast$ {\bfseries List}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_a75eb9467095eeb9846a8648de249197c}{list\+\_\+new}} (void)
+\begin{DoxyCompactList}\small\item\em Create a list empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{list_8h_ae3dcdf8bd5179828d49f6dc62d4d046e}{list\+\_\+destruct}} (\mbox{\hyperlink{structList}{List}} l)
+\begin{DoxyCompactList}\small\item\em Destruct the list. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{list_8h_ae3a711aad65490db342f8dd5932c3416}{list\+\_\+size}} (const \mbox{\hyperlink{structList}{List}} l)
+\begin{DoxyCompactList}\small\item\em Get the size of the list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{list_8h_a4ca20d04b1de04bdfb3a962c76931fb0}{list\+\_\+is\+Empty}} (const \mbox{\hyperlink{structList}{List}} l)
+\begin{DoxyCompactList}\small\item\em Know if a list is empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_a73d117134a9aee44cbf3966a156930fa}{list\+\_\+add}} (\mbox{\hyperlink{structList}{List}} l, void $\ast$e)
+\begin{DoxyCompactList}\small\item\em Add an element in the list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_a3f295fa2c723e3c8ffb3a3a6ddb514f8}{list\+\_\+remove}} (\mbox{\hyperlink{structList}{List}} l, const unsigned int index)
+\begin{DoxyCompactList}\small\item\em Remove element from the list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_a44f5117f91ca15801e3c23fa1ea920e1}{list\+\_\+insert}} (\mbox{\hyperlink{structList}{List}} l, const unsigned int index, void $\ast$e)
+\begin{DoxyCompactList}\small\item\em Insert an element at index in list. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{list_8h_a61000c821d674824c3e661081ff97417}{list\+\_\+get}} (const \mbox{\hyperlink{structList}{List}} l, const unsigned int index)
+\begin{DoxyCompactList}\small\item\em Obtain element at index from list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_acb243bb37726efe3b5d210bef5aaa298}{list\+\_\+map}} (\mbox{\hyperlink{structList}{List}} l, void $\ast$f(void $\ast$e))
+\begin{DoxyCompactList}\small\item\em Apply the function f on the list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_ac392099cbae36b25685633a71e5c5018}{list\+\_\+sublist}} (const \mbox{\hyperlink{structList}{List}} l, const unsigned int index1, const unsigned int index2)
+\begin{DoxyCompactList}\small\item\em Create a view/sublist with a list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{list_8h_a5778c21a6c71bc63ac30386b7290d5b4}{list\+\_\+exists}} (const \mbox{\hyperlink{structList}{List}} l, bool predicate(void $\ast$e))
+\begin{DoxyCompactList}\small\item\em Check if it exists an element checking a predicate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{list_8h_a0666b3ec8f1d1c0bd12f9bd3ad64d8fd}{list\+\_\+forall}} (const \mbox{\hyperlink{structList}{List}} l, bool predicate(void $\ast$e))
+\begin{DoxyCompactList}\small\item\em Check if all elements check the predicat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Jessy Khafif 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{list_8h_a73d117134a9aee44cbf3966a156930fa}\label{list_8h_a73d117134a9aee44cbf3966a156930fa}} 
+\index{list.h@{list.h}!list\_add@{list\_add}}
+\index{list\_add@{list\_add}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_add()}{list\_add()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structList}{List}} list\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structList}{List}}}]{l,  }\item[{void $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Add an element in the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & \+: generic element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list modified 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) and (e != N\+U\+LL) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_ae3dcdf8bd5179828d49f6dc62d4d046e}\label{list_8h_ae3dcdf8bd5179828d49f6dc62d4d046e}} 
+\index{list.h@{list.h}!list\_destruct@{list\_destruct}}
+\index{list\_destruct@{list\_destruct}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_destruct()}{list\_destruct()}}
+{\footnotesize\ttfamily void list\+\_\+destruct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structList}{List}}}]{l }\end{DoxyParamCaption})}
+
+
+
+Destruct the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em l} & \+: a list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+(l == N\+U\+LL) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{list_8h_a5778c21a6c71bc63ac30386b7290d5b4}\label{list_8h_a5778c21a6c71bc63ac30386b7290d5b4}} 
+\index{list.h@{list.h}!list\_exists@{list\_exists}}
+\index{list\_exists@{list\_exists}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_exists()}{list\_exists()}}
+{\footnotesize\ttfamily int list\+\_\+exists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{bool }]{predicatevoid $\ast$e }\end{DoxyParamCaption})}
+
+
+
+Check if it exists an element checking a predicate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em predicate} & \+: predicate returning 0 if false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if it doesn\textquotesingle{}t exist an element e such as predicate(e) == 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{list_8h_a0666b3ec8f1d1c0bd12f9bd3ad64d8fd}\label{list_8h_a0666b3ec8f1d1c0bd12f9bd3ad64d8fd}} 
+\index{list.h@{list.h}!list\_forall@{list\_forall}}
+\index{list\_forall@{list\_forall}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_forall()}{list\_forall()}}
+{\footnotesize\ttfamily int list\+\_\+forall (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{bool }]{predicatevoid $\ast$e }\end{DoxyParamCaption})}
+
+
+
+Check if all elements check the predicat. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em predicate} & \+: predicate returning 0 if false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if it exists an element e such as predicate(e) == 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{list_8h_a61000c821d674824c3e661081ff97417}\label{list_8h_a61000c821d674824c3e661081ff97417}} 
+\index{list.h@{list.h}!list\_get@{list\_get}}
+\index{list\_get@{list\_get}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_get()}{list\_get()}}
+{\footnotesize\ttfamily void$\ast$ list\+\_\+get (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{const unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+Obtain element at index from list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em index} & \+: position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: element 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) \&\& (!list\+\_\+is\+Empty(l)) \&\& (index $<$ list\+\_\+size(l)) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_a44f5117f91ca15801e3c23fa1ea920e1}\label{list_8h_a44f5117f91ca15801e3c23fa1ea920e1}} 
+\index{list.h@{list.h}!list\_insert@{list\_insert}}
+\index{list\_insert@{list\_insert}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_insert()}{list\_insert()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structList}{List}} list\+\_\+insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structList}{List}}}]{l,  }\item[{const unsigned int}]{index,  }\item[{void $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Insert an element at index in list. 
+
+\begin{DoxyNote}{Note}
+list\+\_\+add(l,e) $<$=$>$ list\+\_\+insert(l,list\+\_\+size(l),e) 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em index} & \+: position \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & \+: generic element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list modified 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) \&\& (e != N\+U\+LL) \&\& (index $<$ list\+\_\+size(l)) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_a4ca20d04b1de04bdfb3a962c76931fb0}\label{list_8h_a4ca20d04b1de04bdfb3a962c76931fb0}} 
+\index{list.h@{list.h}!list\_isEmpty@{list\_isEmpty}}
+\index{list\_isEmpty@{list\_isEmpty}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_isEmpty()}{list\_isEmpty()}}
+{\footnotesize\ttfamily bool list\+\_\+is\+Empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l }\end{DoxyParamCaption})}
+
+
+
+Know if a list is empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & \+: list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list\+\_\+is\+Empty(l) == 1 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_acb243bb37726efe3b5d210bef5aaa298}\label{list_8h_acb243bb37726efe3b5d210bef5aaa298}} 
+\index{list.h@{list.h}!list\_map@{list\_map}}
+\index{list\_map@{list\_map}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_map()}{list\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structList}{List}} list\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structList}{List}}}]{l,  }\item[{void $\ast$}]{fvoid $\ast$e }\end{DoxyParamCaption})}
+
+
+
+Apply the function f on the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em f} & \+: function applied on the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list modified by f 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_a75eb9467095eeb9846a8648de249197c}\label{list_8h_a75eb9467095eeb9846a8648de249197c}} 
+\index{list.h@{list.h}!list\_new@{list\_new}}
+\index{list\_new@{list\_new}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_new()}{list\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structList}{List}} list\+\_\+new (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a list empty. 
+
+\begin{DoxyReturn}{Returns}
+a list 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+(\mbox{\hyperlink{list_8h_a75eb9467095eeb9846a8648de249197c}{list\+\_\+new()}} != N\+U\+LL) \&\& (list\+\_\+is\+Empty(list\+\_\+new()) == 1) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{list_8h_a3f295fa2c723e3c8ffb3a3a6ddb514f8}\label{list_8h_a3f295fa2c723e3c8ffb3a3a6ddb514f8}} 
+\index{list.h@{list.h}!list\_remove@{list\_remove}}
+\index{list\_remove@{list\_remove}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_remove()}{list\_remove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structList}{List}} list\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structList}{List}}}]{l,  }\item[{const unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+Remove element from the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em index} & \+: index of element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list modified 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) \&\& (index $<$ list\+\_\+size(l)) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_ae3a711aad65490db342f8dd5932c3416}\label{list_8h_ae3a711aad65490db342f8dd5932c3416}} 
+\index{list.h@{list.h}!list\_size@{list\_size}}
+\index{list\_size@{list\_size}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_size()}{list\_size()}}
+{\footnotesize\ttfamily unsigned int list\+\_\+size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l }\end{DoxyParamCaption})}
+
+
+
+Get the size of the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & \+: list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the lenght of list 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{list_8h_ac392099cbae36b25685633a71e5c5018}\label{list_8h_ac392099cbae36b25685633a71e5c5018}} 
+\index{list.h@{list.h}!list\_sublist@{list\_sublist}}
+\index{list\_sublist@{list\_sublist}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_sublist()}{list\_sublist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structList}{List}} list\+\_\+sublist (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{const unsigned int}]{index1,  }\item[{const unsigned int}]{index2 }\end{DoxyParamCaption})}
+
+
+
+Create a view/sublist with a list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em l} & \+: list \\
+\hline
+\mbox{\texttt{ in}}  & {\em index1} & \+: the first position \\
+\hline
+\mbox{\texttt{ in}}  & {\em index2} & \+: the second position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the sublist 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+(l != N\+U\+LL) \&\& (0 $<$= index1) \&\& (index1 $<$= index2) \&\& (index2 $<$ list\+\_\+size(l)) 
+\end{DoxyPrecond}

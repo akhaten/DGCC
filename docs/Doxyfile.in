@@ -1,9 +1,8 @@
 PROJECT_NAME           = "@CMAKE_PROJECT_NAME@"
-STRIP_FROM_PATH        = @PROJECT_SOURCE_DIR@ \
-                         @PROJECT_BINARY_DIR@
+STRIP_FROM_PATH        = @PROJECT_SOURCE_DIR@/headers/
 INPUT                  = @doxy_main_page@ \
                          @PROJECT_SOURCE_DIR@ \
                          @PROJECT_BINARY_DIR@
-FILE_PATTERNS          = *.h
+FILE_PATTERNS          = *.h *.md
 RECURSIVE              = YES
-USE_MDFILE_AS_MAINPAGE = @doxy_main_page@
+USE_MDFILE_AS_MAINPAGE = README.md

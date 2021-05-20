@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "stack.h"
 
 #define STACK_INIT 100
@@ -34,7 +31,7 @@ Stack stack_new(void){
 }
 
 Stack stack_push(Stack s, void *e){
-  
+  assert( (s != NULL) && (e != NULL) );
   Node new = malloc(sizeof(struct s_Node));
   
   if(!new){
@@ -52,7 +49,7 @@ Stack stack_push(Stack s, void *e){
 }
 
 Stack stack_pop(Stack s){
-
+  assert( (s != NULL) && (stack_isEmpty(s) == 0) );
   Node old = s->top;
   
   s->top = old->next;
@@ -64,24 +61,29 @@ Stack stack_pop(Stack s){
 }
 
 void* stack_top(const Stack s){
+  assert( (s != NULL) && (stack_isEmpty(s) == 0) );
   return s->top->value;
 }
 
 int stack_size(const Stack s){
+  assert( (s != NULL) );
   return s->size;
 }
 
-int stack_isEmpty(const Stack s){
-  return s->top == NULL; 
+bool stack_isEmpty(const Stack s){
+  assert( (s != NULL) );
+  return !s->size;
 }
 
 void stack_destruct(Stack s){
+  assert( (s != NULL) );
   while(!stack_isEmpty(s))
     stack_pop(s);
   free(s);
 }
 
-void stack_map(Stack s, void* f(void *)){
+void stack_map(Stack s, void* f(void *e)){
+  assert( (s != NULL) );
   for(Node cur = s->top; cur != NULL; cur = cur->next)
     cur->value = f(cur->value);
 }
