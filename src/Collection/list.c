@@ -1,9 +1,6 @@
+
 #include "list.h"
 
-#define LIST_INIT 100
-#define SENTINEL_INIT 99
-#define ELEMENT_INIT 98
-#define LIST_ITERATOR_INIT 97
 
 typedef struct s_Node {
   void *value;
@@ -14,12 +11,6 @@ typedef struct s_Node {
 struct s_List {
   Node sentinel;
   int size;
-};
-
-struct s_ListIterator {
-  Node begin;
-  Node end;
-  Node cur;
 };
 
 
@@ -49,6 +40,7 @@ List list_new(void){
 }
 
 void list_destruct(List l){
+
   assert(l != NULL);
 
   while(!list_isEmpty(l))
@@ -61,16 +53,23 @@ void list_destruct(List l){
 }
 
 unsigned int list_size(const List l){
+  
   assert(l != NULL);
+
   return l->size;
+
 }
 
 bool list_isEmpty(const List l){
+
   assert(l != NULL);
+  
   return !l->size;
+
 }
 
 List list_add(List l, void *e){
+
   assert( (l != NULL) && (e != NULL) );
 
   Node new = malloc(sizeof(struct s_Node));
@@ -93,6 +92,7 @@ List list_add(List l, void *e){
 }
 
 List list_remove(List l, const unsigned int index){
+
   assert( (l != NULL) && (index < list_size(l)) );
   
   Node cur = l->sentinel->next;
@@ -112,6 +112,7 @@ List list_remove(List l, const unsigned int index){
 }
 
 List list_insert(List l, const unsigned int index, void *e){
+
   assert( (l != NULL) && (e != NULL) && (0 <= index) && (index <= list_size(l)));
   
   Node cur = l->sentinel->next;
@@ -131,13 +132,14 @@ List list_insert(List l, const unsigned int index, void *e){
   new->next = cur;
   new->previous->next = new;
   new->next->previous = new;
- 
   ++l->size;
   
   return l;
+
 }
 
 void *list_get(const List l, const unsigned int index){
+
   assert( (l != NULL) && (!list_isEmpty(l)) && (0 <= index) && (index < list_size(l)) );
 
   Node cur = l->sentinel->next;
@@ -150,12 +152,18 @@ void *list_get(const List l, const unsigned int index){
 }
 
 List list_map(List l, void* f(void *e)){
+  
+  assert( (l != NULL) );
+
   for(Node cur = l->sentinel->next; cur != l->sentinel; cur = cur->next)
     cur->value = f(cur->value);
+  
   return l;
+
 }
 
 List list_sublist(const List l, const unsigned int index1, const unsigned int index2){
+
   assert((l != NULL) && (0 <= index1) && (index1 <= index2) && (index2 < list_size(l)));
   
   List sublist = list_new();
@@ -178,6 +186,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
 }
 
 bool list_exists(const List l, bool predicate(void *e)){
+
   assert(l != NULL);
 
   Node cur = l->sentinel->next;
@@ -208,43 +217,18 @@ bool list_forall(const List l, bool predicate(void *e)){
 
 }
 
-/*ListIterator list_iterator(const List l){
-  assert(l != NULL);
+List list_copy(List l){
+
+  assert( (l != NULL) );
+
+  List copy = list_new();
+  int size = list_size(l); 
   
-  ListIterator iter = malloc(sizeof(struct s_ListIterator));
-
-  if(!iter){
-    perror("list_iterator");
-    exit(LIST_ITERATOR_INIT);
-  }
-
-  iter->begin = l->sentinel;
-  iter->cur = iter->begin;
-  iter->end = l->sentinel->previous;
-
-  return iter;
+  for(int index = 0; index < size; ++index)
+    list_add(copy, list_get(l, index));
+  
+  return copy;
 
 }
-
-int list_iterator_hasnext(const ListIterator iter){
-  assert(iter != NULL);
-  return iter->cur != iter->end;
-}
-
-void *list_iterator_value(const ListIterator iter){
-  return iter->cur->value;
-}
-
-ListIterator list_iterator_next(ListIterator iter){
-  assert(iter != NULL);
-  iter->cur = iter->cur->next;
-  return iter;
-}
-
-ListIterator list_iterator_previous(ListIterator iter){
-  assert(iter != NULL);
-  iter->cur = iter->cur->previous;
-  return iter;
-}*/
 
 

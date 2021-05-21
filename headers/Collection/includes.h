@@ -16,6 +16,19 @@
 #include <stdbool.h>
 #include <assert.h>
 
+/**
+ * \def error constants
+ */
+
+#define STACK_INIT 100
+#define CONS_ELMT 99
+
+
+#define LIST_INIT 100
+#define SENTINEL_INIT 99
+#define ELEMENT_INIT 98
+#define LIST_ITERATOR_INIT 97
+
 
 /**
  * \typedef define a generic element

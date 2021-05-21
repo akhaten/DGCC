@@ -119,25 +119,13 @@ bool list_exists(const List l, bool predicate(void *e));
  */
 bool list_forall(const List l, bool predicate(void *e));
 
-/*List list_reverse(List l);
-List list_copy(List l);*/
+/**
+ * \brief Copy a list
+ * \param[in] l : list
+ * \return list copied
+ */
+List list_copy(List l);
 
-
-/*
-
-typedef struct s_ListIterator* ListIterator;
-
-ListIterator list_iterator(const List list);
-
-int list_iter_hasnext(const ListIterator iter);
-
-void *list_iter_value(const ListIterator iter);
-
-ListIterator list_iter_next(ListIterator iter);
-
-ListIterator list_iter_previous(ListIterator iter);
-
-*/
 #endif
 
 
