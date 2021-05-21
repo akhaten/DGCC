@@ -10,4 +10,8 @@ The project is a library regrouping several generic collections :
 - Queue : TODO
 - PriorityQueue : TODO
 
+# How use the library
+
+TODO (Do an example of project)
+
 

@@ -71,9 +71,10 @@ bool stack_isEmpty(const Stack s);
 void stack_destruct(Stack s);
 
 /**
- * \brief Apply the function f on the stack
+ * \brief Apply the function f on elements of the stack
  * \param[in,out] s : stack
  * \param[in] f : function
+ * \pre (s != NULL)
  */
 void stack_map(Stack s, void* f(void *e));
 
