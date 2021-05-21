@@ -127,12 +127,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ac392099cbae36b25685633a71e5c5018"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ac392099cbae36b25685633a71e5c5018">list_sublist</a> (const <a class="el" href="structList.html">List</a> l, const unsigned int index1, const unsigned int index2)</td></tr>
 <tr class="memdesc:ac392099cbae36b25685633a71e5c5018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a view/sublist with a list.  <a href="list_8h.html#ac392099cbae36b25685633a71e5c5018">More...</a><br /></td></tr>
 <tr class="separator:ac392099cbae36b25685633a71e5c5018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5778c21a6c71bc63ac30386b7290d5b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a5778c21a6c71bc63ac30386b7290d5b4">list_exists</a> (const <a class="el" href="structList.html">List</a> l, bool predicate(void *e))</td></tr>
-<tr class="memdesc:a5778c21a6c71bc63ac30386b7290d5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if it exists an element checking a predicate.  <a href="list_8h.html#a5778c21a6c71bc63ac30386b7290d5b4">More...</a><br /></td></tr>
-<tr class="separator:a5778c21a6c71bc63ac30386b7290d5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0666b3ec8f1d1c0bd12f9bd3ad64d8fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a0666b3ec8f1d1c0bd12f9bd3ad64d8fd">list_forall</a> (const <a class="el" href="structList.html">List</a> l, bool predicate(void *e))</td></tr>
-<tr class="memdesc:a0666b3ec8f1d1c0bd12f9bd3ad64d8fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if all elements check the predicat.  <a href="list_8h.html#a0666b3ec8f1d1c0bd12f9bd3ad64d8fd">More...</a><br /></td></tr>
-<tr class="separator:a0666b3ec8f1d1c0bd12f9bd3ad64d8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a629d91ae12266ad2015fd3cf6b24b67d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a629d91ae12266ad2015fd3cf6b24b67d">list_exists</a> (const <a class="el" href="structList.html">List</a> l, bool predicate(void *e))</td></tr>
+<tr class="memdesc:a629d91ae12266ad2015fd3cf6b24b67d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if it exists an element checking a predicate.  <a href="list_8h.html#a629d91ae12266ad2015fd3cf6b24b67d">More...</a><br /></td></tr>
+<tr class="separator:a629d91ae12266ad2015fd3cf6b24b67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4bfc57a0ebbacc80bc8fd19f17f9ec3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aa4bfc57a0ebbacc80bc8fd19f17f9ec3">list_forall</a> (const <a class="el" href="structList.html">List</a> l, bool predicate(void *e))</td></tr>
+<tr class="memdesc:aa4bfc57a0ebbacc80bc8fd19f17f9ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if all elements check the predicat.  <a href="list_8h.html#aa4bfc57a0ebbacc80bc8fd19f17f9ec3">More...</a><br /></td></tr>
+<tr class="separator:aa4bfc57a0ebbacc80bc8fd19f17f9ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jessy Khafif </dd></dl>
@@ -204,14 +204,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5778c21a6c71bc63ac30386b7290d5b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5778c21a6c71bc63ac30386b7290d5b4">&#9670;&nbsp;</a></span>list_exists()</h2>
+<a id="a629d91ae12266ad2015fd3cf6b24b67d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a629d91ae12266ad2015fd3cf6b24b67d">&#9670;&nbsp;</a></span>list_exists()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int list_exists </td>
+          <td class="memname">bool list_exists </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structList.html">List</a>&#160;</td>
           <td class="paramname"><em>l</em>, </td>
@@ -242,14 +242,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0666b3ec8f1d1c0bd12f9bd3ad64d8fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0666b3ec8f1d1c0bd12f9bd3ad64d8fd">&#9670;&nbsp;</a></span>list_forall()</h2>
+<a id="aa4bfc57a0ebbacc80bc8fd19f17f9ec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4bfc57a0ebbacc80bc8fd19f17f9ec3">&#9670;&nbsp;</a></span>list_forall()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int list_forall </td>
+          <td class="memname">bool list_forall </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structList.html">List</a>&#160;</td>
           <td class="paramname"><em>l</em>, </td>

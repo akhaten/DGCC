@@ -1,0 +1,76 @@
+\begin{theindex}
+
+  \item {Collection/list.h}, \hyperpage{9}
+  \item {Collection/stack.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {List}, \hyperpage{7}
+  \item {list.h}
+    \subitem {list\_add}, \hyperpage{10}
+    \subitem {list\_destruct}, \hyperpage{11}
+    \subitem {list\_exists}, \hyperpage{11}
+    \subitem {list\_forall}, \hyperpage{11}
+    \subitem {list\_get}, \hyperpage{12}
+    \subitem {list\_insert}, \hyperpage{12}
+    \subitem {list\_isEmpty}, \hyperpage{13}
+    \subitem {list\_map}, \hyperpage{13}
+    \subitem {list\_new}, \hyperpage{14}
+    \subitem {list\_remove}, \hyperpage{14}
+    \subitem {list\_size}, \hyperpage{14}
+    \subitem {list\_sublist}, \hyperpage{15}
+  \item {list\_add}
+    \subitem {list.h}, \hyperpage{10}
+  \item {list\_destruct}
+    \subitem {list.h}, \hyperpage{11}
+  \item {list\_exists}
+    \subitem {list.h}, \hyperpage{11}
+  \item {list\_forall}
+    \subitem {list.h}, \hyperpage{11}
+  \item {list\_get}
+    \subitem {list.h}, \hyperpage{12}
+  \item {list\_insert}
+    \subitem {list.h}, \hyperpage{12}
+  \item {list\_isEmpty}
+    \subitem {list.h}, \hyperpage{13}
+  \item {list\_map}
+    \subitem {list.h}, \hyperpage{13}
+  \item {list\_new}
+    \subitem {list.h}, \hyperpage{14}
+  \item {list\_remove}
+    \subitem {list.h}, \hyperpage{14}
+  \item {list\_size}
+    \subitem {list.h}, \hyperpage{14}
+  \item {list\_sublist}
+    \subitem {list.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {Stack}, \hyperpage{7}
+  \item {stack.h}
+    \subitem {stack\_destruct}, \hyperpage{17}
+    \subitem {stack\_isEmpty}, \hyperpage{17}
+    \subitem {stack\_map}, \hyperpage{17}
+    \subitem {stack\_new}, \hyperpage{18}
+    \subitem {stack\_pop}, \hyperpage{18}
+    \subitem {stack\_push}, \hyperpage{19}
+    \subitem {stack\_size}, \hyperpage{19}
+    \subitem {stack\_top}, \hyperpage{19}
+  \item {stack\_destruct}
+    \subitem {stack.h}, \hyperpage{17}
+  \item {stack\_isEmpty}
+    \subitem {stack.h}, \hyperpage{17}
+  \item {stack\_map}
+    \subitem {stack.h}, \hyperpage{17}
+  \item {stack\_new}
+    \subitem {stack.h}, \hyperpage{18}
+  \item {stack\_pop}
+    \subitem {stack.h}, \hyperpage{18}
+  \item {stack\_push}
+    \subitem {stack.h}, \hyperpage{19}
+  \item {stack\_size}
+    \subitem {stack.h}, \hyperpage{19}
+  \item {stack\_top}
+    \subitem {stack.h}, \hyperpage{19}
+
+\end{theindex}

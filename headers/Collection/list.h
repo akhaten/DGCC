@@ -109,7 +109,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
  * \param[in] predicate : predicate returning 0 if false
  * \return 0 if it doesn't exist an element e such as predicate(e) == 0
  */
-int list_exists(const List l, bool predicate(void *e));
+bool list_exists(const List l, bool predicate(void *e));
 
 /**
  * \brief Check if all elements check the predicat
@@ -117,7 +117,7 @@ int list_exists(const List l, bool predicate(void *e));
  * \param[in] predicate : predicate returning 0 if false
  * \return 0 if it exists an element e such as predicate(e) == 0
  */
-int list_forall(const List l, bool predicate(void *e));
+bool list_forall(const List l, bool predicate(void *e));
 
 /*List list_reverse(List l);
 List list_copy(List l);*/

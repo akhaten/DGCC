@@ -38,9 +38,9 @@ void $\ast$ \mbox{\hyperlink{list_8h_a61000c821d674824c3e661081ff97417}{list\+\_
 \begin{DoxyCompactList}\small\item\em Apply the function f on the list. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structList}{List}} \mbox{\hyperlink{list_8h_ac392099cbae36b25685633a71e5c5018}{list\+\_\+sublist}} (const \mbox{\hyperlink{structList}{List}} l, const unsigned int index1, const unsigned int index2)
 \begin{DoxyCompactList}\small\item\em Create a view/sublist with a list. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{list_8h_a5778c21a6c71bc63ac30386b7290d5b4}{list\+\_\+exists}} (const \mbox{\hyperlink{structList}{List}} l, bool predicate(void $\ast$e))
+bool \mbox{\hyperlink{list_8h_a629d91ae12266ad2015fd3cf6b24b67d}{list\+\_\+exists}} (const \mbox{\hyperlink{structList}{List}} l, bool predicate(void $\ast$e))
 \begin{DoxyCompactList}\small\item\em Check if it exists an element checking a predicate. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{list_8h_a0666b3ec8f1d1c0bd12f9bd3ad64d8fd}{list\+\_\+forall}} (const \mbox{\hyperlink{structList}{List}} l, bool predicate(void $\ast$e))
+bool \mbox{\hyperlink{list_8h_aa4bfc57a0ebbacc80bc8fd19f17f9ec3}{list\+\_\+forall}} (const \mbox{\hyperlink{structList}{List}} l, bool predicate(void $\ast$e))
 \begin{DoxyCompactList}\small\item\em Check if all elements check the predicat. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -95,11 +95,11 @@ Destruct the list.
 \begin{DoxyPostcond}{Postcondition}
 (l == N\+U\+LL) 
 \end{DoxyPostcond}
-\mbox{\Hypertarget{list_8h_a5778c21a6c71bc63ac30386b7290d5b4}\label{list_8h_a5778c21a6c71bc63ac30386b7290d5b4}} 
+\mbox{\Hypertarget{list_8h_a629d91ae12266ad2015fd3cf6b24b67d}\label{list_8h_a629d91ae12266ad2015fd3cf6b24b67d}} 
 \index{list.h@{list.h}!list\_exists@{list\_exists}}
 \index{list\_exists@{list\_exists}!list.h@{list.h}}
 \doxysubsubsection{\texorpdfstring{list\_exists()}{list\_exists()}}
-{\footnotesize\ttfamily int list\+\_\+exists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{bool }]{predicatevoid $\ast$e }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool list\+\_\+exists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{bool }]{predicatevoid $\ast$e }\end{DoxyParamCaption})}
 
 
 
@@ -115,11 +115,11 @@ Check if it exists an element checking a predicate.
 \begin{DoxyReturn}{Returns}
 0 if it doesn\textquotesingle{}t exist an element e such as predicate(e) == 0 
 \end{DoxyReturn}
-\mbox{\Hypertarget{list_8h_a0666b3ec8f1d1c0bd12f9bd3ad64d8fd}\label{list_8h_a0666b3ec8f1d1c0bd12f9bd3ad64d8fd}} 
+\mbox{\Hypertarget{list_8h_aa4bfc57a0ebbacc80bc8fd19f17f9ec3}\label{list_8h_aa4bfc57a0ebbacc80bc8fd19f17f9ec3}} 
 \index{list.h@{list.h}!list\_forall@{list\_forall}}
 \index{list\_forall@{list\_forall}!list.h@{list.h}}
 \doxysubsubsection{\texorpdfstring{list\_forall()}{list\_forall()}}
-{\footnotesize\ttfamily int list\+\_\+forall (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{bool }]{predicatevoid $\ast$e }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool list\+\_\+forall (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structList}{List}}}]{l,  }\item[{bool }]{predicatevoid $\ast$e }\end{DoxyParamCaption})}
 
 
 

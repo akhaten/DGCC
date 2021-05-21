@@ -5,6 +5,9 @@
 The project is a library regrouping several generic collections :
 
 - Stack : First In First Out (FIFO)
-- List  : Double linked list
+- List
+- OrderedList : TODO
+- Queue : TODO
+- PriorityQueue : TODO
 
 

@@ -1,0 +1,40 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CC}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Dynamic Generic C Collection}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}List Struct Reference}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Stack Struct Reference}{7}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{7}{subsection.4.2.1}%
+\contentsline {chapter}{\numberline {5}File Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Collection/list.h File Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{10}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Function Documentation}{10}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}list\_add()}{10}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}list\_destruct()}{11}{subsubsection.5.1.2.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.3}list\_exists()}{11}{subsubsection.5.1.2.3}%
+\contentsline {subsubsection}{\numberline {5.1.2.4}list\_forall()}{11}{subsubsection.5.1.2.4}%
+\contentsline {subsubsection}{\numberline {5.1.2.5}list\_get()}{12}{subsubsection.5.1.2.5}%
+\contentsline {subsubsection}{\numberline {5.1.2.6}list\_insert()}{12}{subsubsection.5.1.2.6}%
+\contentsline {subsubsection}{\numberline {5.1.2.7}list\_isEmpty()}{13}{subsubsection.5.1.2.7}%
+\contentsline {subsubsection}{\numberline {5.1.2.8}list\_map()}{13}{subsubsection.5.1.2.8}%
+\contentsline {subsubsection}{\numberline {5.1.2.9}list\_new()}{14}{subsubsection.5.1.2.9}%
+\contentsline {subsubsection}{\numberline {5.1.2.10}list\_remove()}{14}{subsubsection.5.1.2.10}%
+\contentsline {subsubsection}{\numberline {5.1.2.11}list\_size()}{15}{subsubsection.5.1.2.11}%
+\contentsline {subsubsection}{\numberline {5.1.2.12}list\_sublist()}{15}{subsubsection.5.1.2.12}%
+\contentsline {section}{\numberline {5.2}Collection/stack.h File Reference}{15}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{16}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Function Documentation}{17}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}stack\_destruct()}{17}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}stack\_isEmpty()}{17}{subsubsection.5.2.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}stack\_map()}{18}{subsubsection.5.2.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.2.4}stack\_new()}{18}{subsubsection.5.2.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.2.5}stack\_pop()}{18}{subsubsection.5.2.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.2.6}stack\_push()}{19}{subsubsection.5.2.2.6}%
+\contentsline {subsubsection}{\numberline {5.2.2.7}stack\_size()}{19}{subsubsection.5.2.2.7}%
+\contentsline {subsubsection}{\numberline {5.2.2.8}stack\_top()}{20}{subsubsection.5.2.2.8}%
+\contentsline {chapter}{Index}{21}{section*.7}%

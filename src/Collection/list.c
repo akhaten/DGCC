@@ -177,30 +177,32 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
 
 }
 
-int list_exists(const List l, bool predicate(void *e)){
+bool list_exists(const List l, bool predicate(void *e)){
   assert(l != NULL);
 
   Node cur = l->sentinel->next;
-  int check = 0;
+  int find = false;
   
-  while((check == 0) && (cur != l->sentinel)){
-    check = predicate(cur->value);
+  while((!find) && (cur != l->sentinel)){
+    find = predicate(cur->value);
     cur = cur->next;
   }
   
-  return check;
+  return find;
 
 }
 
-int list_forall(const List l, bool predicate(void *e)){
+bool list_forall(const List l, bool predicate(void *e)){
   
   assert(l != NULL);
 
   Node cur = l->sentinel->next;
-  int check = 1;
+  int check = true;
   
-  while((check == 1) && (cur != l->sentinel))
+  while((check) && (cur != l->sentinel)){
     check = predicate(cur->value);
+    cur = cur->next;
+  }
   
   return check;
 
@@ -244,6 +246,5 @@ ListIterator list_iterator_previous(ListIterator iter){
   iter->cur = iter->cur->previous;
   return iter;
 }*/
-
 
 

@@ -2,8 +2,8 @@ var searchData=
 [
   ['list_5fadd_29',['list_add',['../list_8h.html#a73d117134a9aee44cbf3966a156930fa',1,'list.h']]],
   ['list_5fdestruct_30',['list_destruct',['../list_8h.html#ae3dcdf8bd5179828d49f6dc62d4d046e',1,'list.h']]],
-  ['list_5fexists_31',['list_exists',['../list_8h.html#a5778c21a6c71bc63ac30386b7290d5b4',1,'list.h']]],
-  ['list_5fforall_32',['list_forall',['../list_8h.html#a0666b3ec8f1d1c0bd12f9bd3ad64d8fd',1,'list.h']]],
+  ['list_5fexists_31',['list_exists',['../list_8h.html#a629d91ae12266ad2015fd3cf6b24b67d',1,'list.h']]],
+  ['list_5fforall_32',['list_forall',['../list_8h.html#aa4bfc57a0ebbacc80bc8fd19f17f9ec3',1,'list.h']]],
   ['list_5fget_33',['list_get',['../list_8h.html#a61000c821d674824c3e661081ff97417',1,'list.h']]],
   ['list_5finsert_34',['list_insert',['../list_8h.html#a44f5117f91ca15801e3c23fa1ea920e1',1,'list.h']]],
   ['list_5fisempty_35',['list_isEmpty',['../list_8h.html#a4ca20d04b1de04bdfb3a962c76931fb0',1,'list.h']]],
