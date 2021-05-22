@@ -21,13 +21,15 @@
  */
 
 #define STACK_INIT 100
-#define CONS_ELMT 99
+#define LIST_INIT 99
+#define QUEUE_INIT 98
+#define ORDEREDLIST_INIT 97
+#define PRIORITYQUEUE_INIT 96
 
 
-#define LIST_INIT 100
-#define SENTINEL_INIT 99
-#define ELEMENT_INIT 98
-#define LIST_ITERATOR_INIT 97
+#define SENTINEL_INIT 89
+#define ELEMENT_INIT 88
+
 
 
 /**

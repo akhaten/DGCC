@@ -37,7 +37,7 @@ Stack stack_push(Stack s, void *e){
   
   if(!new){
     perror("stack_push()");
-    exit(CONS_ELMT);
+    exit(ELEMENT_INIT);
   }
   
   new->value = e;
