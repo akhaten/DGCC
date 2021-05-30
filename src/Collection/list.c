@@ -11,6 +11,7 @@ typedef struct s_Node {
 struct s_List {
   Node sentinel;
   int size;
+  bool mutation;
 };
 
 
@@ -34,6 +35,7 @@ List list_new(void){
   l->sentinel->previous = l->sentinel;
   l->sentinel->next = l->sentinel;
   l->size = 0;
+  l->mutation = true;
   
   return l;
 
@@ -47,6 +49,8 @@ void list_destruct(List l){
     list_remove(l,0);
 
   free(l->sentinel);
+  l->sentinel = NULL;
+  
   free(l);
   l = NULL;
 
@@ -86,6 +90,7 @@ List list_add(List l, void *e){
   new->previous->next = new;
   new->next->previous = new;
   ++l->size;
+  l->mutation = true;
   
   return l;
 
@@ -103,6 +108,7 @@ List list_remove(List l, const unsigned int index){
   cur->next->previous = cur->previous;
   cur->previous->next = cur-> next;
   --l->size;
+  l->mutation = true;
 
   free(cur);
   cur = NULL;
@@ -133,6 +139,7 @@ List list_insert(List l, const unsigned int index, void *e){
   new->previous->next = new;
   new->next->previous = new;
   ++l->size;
+  l->mutation = true;
   
   return l;
 
@@ -157,6 +164,8 @@ List list_map(List l, void* f(void *e)){
 
   for(Node cur = l->sentinel->next; cur != l->sentinel; cur = cur->next)
     cur->value = f(cur->value);
+
+  l->mutation = true;
   
   return l;
 
@@ -230,5 +239,72 @@ List list_copy(List l){
   return copy;
 
 }
+
+struct s_ListIterator {
+  Node sentinel; 
+  Node cur;
+  bool *mutation;
+};
+
+ListIterator listiterator_new(List l){
+  
+  assert( l != NULL );
+
+  ListIterator iter = malloc(sizeof(struct s_ListIterator));
+  
+  if(!iter){
+    perror("listiterator_new()");
+    exit(ITERATOR_INIT);
+  }
+  
+  iter->sentinel = l->sentinel;
+  iter->cur = iter->sentinel;
+  l->mutation = false;
+  iter->mutation = &l->mutation;
+  
+
+  return iter;
+
+}
+
+void listiterator_destruct(ListIterator iter){
+  assert( (iter != NULL) );
+  free(iter);
+  iter = NULL;
+}
+
+bool listiterator_mutation(ListIterator iter){
+  return iter->mutation;
+}
+
+ListIterator listiterator_reset(ListIterator iter){
+  assert( (iter != NULL) && (iter->sentinel != NULL) );
+  iter->cur = iter->sentinel;
+  return iter;
+}
+
+bool listiterator_hasnext(ListIterator iter){
+  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  return iter->cur->next != iter->sentinel;
+}
+
+ListIterator listiterator_next(ListIterator iter){
+  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  iter->cur = iter->cur->next;
+  return iter;
+}
+
+ListIterator listiterator_previous(ListIterator iter){
+  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  iter->cur = iter->cur->previous;
+  return iter;
+}
+
+void *listiterator_value(ListIterator iter){
+  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  return iter->cur->value;
+}
+
+
 
 

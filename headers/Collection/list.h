@@ -126,6 +126,48 @@ bool list_forall(const List l, bool predicate(void *e));
  */
 List list_copy(List l);
 
+
+/**
+ * \struct List
+ * \brief Data structure for iterator of list
+ * \note Warning : the iterator is not valid if you use
+ * 
+ *  list_remove(List l, unsigned int index)
+ * when listiterator_pos(ListIterator iter) == index because the iterator
+ * 
+ */
+typedef struct s_ListIterator* ListIterator;
+
+/**
+ */
+ListIterator listiterator_new(List l);
+
+/**
+ */
+void listiterator_destruct(ListIterator iter);
+
+/**
+ */
+ListIterator listiterator_reset(ListIterator iter);
+
+/**
+ */
+bool listiterator_hasnext(ListIterator iter);
+
+/**
+ */
+ListIterator listiterator_next(ListIterator iter);
+
+/**
+ */
+ListIterator listiterator_previous(ListIterator iter);
+
+/**
+ */
+void *listiterator_value(ListIterator iter);
+
+
+
 #endif
 
 
