@@ -75,7 +75,7 @@ void* queue_top(const Queue q){
 
   assert( (q != NULL) && (!queue_isEmpty(q)) );
 
-  return q->sentinel->previous;
+  return q->sentinel->next->value;
 
 }
 
@@ -86,16 +86,16 @@ Queue queue_push(Queue q, void *e){
   Node new = malloc(sizeof(struct s_Node));
   
   if(!new){
-    perror("list_add()");
+    perror("queue_push()");
     exit(ELEMENT_INIT);
   }
   
   Node sentinel = q->sentinel;
   new->value = e;
-  new->previous = q->sentinel->next;
+  new->previous = sentinel->previous;
   new->next = sentinel;
-  new->previous->next = new;
-  new->next->previous = new;
+  sentinel->previous->next = new;
+  sentinel->previous = new;
   ++q->size;
   q->mutation = true;
   
@@ -107,9 +107,7 @@ Queue queue_pop(Queue q){
 
   assert( (q != NULL) );
 
-  Node old = q->sentinel->previous;
-  
-  Node sentinel = q->sentinel;
+  Node old = q->sentinel->next;
   
   old->previous->next = old->next;
   old->next->previous = old->previous;
@@ -127,8 +125,8 @@ Queue queue_pop(Queue q){
 void queue_map(Queue q, void* f(void *e)){
 
   assert( (q != NULL) );
-  
-  for(Node cur = queue_top(q); cur != NULL; cur = cur->next)
+  for(Node cur = q->sentinel->next; cur != q->sentinel; cur = cur->next)
     cur->value = f(cur->value);
+  
 
 }
