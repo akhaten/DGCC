@@ -228,13 +228,12 @@ bool list_forall(const List l, bool predicate(void *e)){
 
 List list_copy(List l){
 
-  assert( (l != NULL) );
+  assert( (l != NULL) && (!list_isEmpty(l)) );
 
   List copy = list_new();
-  int size = list_size(l); 
   
-  for(int index = 0; index < size; ++index)
-    list_add(copy, list_get(l, index));
+  for(Node cur = l->sentinel->next;  cur->next != l->sentinel; cur = cur->next)
+    list_add(copy, cur->value);
   
   return copy;
 
@@ -269,40 +268,73 @@ ListIterator listiterator_new(List l){
 
 void listiterator_destruct(ListIterator iter){
   assert( (iter != NULL) );
+  
   free(iter);
   iter = NULL;
+
 }
 
 bool listiterator_mutation(ListIterator iter){
+  
+  assert(iter != NULL);
+  
   return iter->mutation;
+
+}
+
+bool listiterator_isValid(ListIterator iter){
+
+  assert(iter != NULL);
+  
+  return iter->sentinel != NULL;
+
 }
 
 ListIterator listiterator_reset(ListIterator iter){
-  assert( (iter != NULL) && (iter->sentinel != NULL) );
+  
+  assert( (iter != NULL) && listiterator_isValid(iter) );
+  
   iter->cur = iter->sentinel;
+  
   return iter;
+
 }
 
+
 bool listiterator_hasnext(ListIterator iter){
+  
   assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  
   return iter->cur->next != iter->sentinel;
+
 }
 
 ListIterator listiterator_next(ListIterator iter){
+  
   assert( (iter != NULL) && (listiterator_mutation(iter)) );
+
   iter->cur = iter->cur->next;
+
   return iter;
+
 }
 
 ListIterator listiterator_previous(ListIterator iter){
+
   assert( (iter != NULL) && (listiterator_mutation(iter)) );
+
   iter->cur = iter->cur->previous;
+
   return iter;
+
 }
 
 void *listiterator_value(ListIterator iter){
+
   assert( (iter != NULL) && (listiterator_mutation(iter)) );
+
   return iter->cur->value;
+
 }
 
 
