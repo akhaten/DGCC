@@ -7,17 +7,17 @@ add_subdirectory(docs)
 include_directories(
   headers/Collection/)
 
-add_library(${CMAKE_PROJECT_NAME}
-  
-  headers/Collection/stack.h
-  src/Collection/stack.c
-  
-  headers/Collection/list.h
-  src/Collection/list.c
+set(headers
+    headers/Collection/stack.h
+    headers/Collection/queue.h
+    headers/Collection/list.h)
 
-  headers/Collection/queue.h
-  src/Collection/queue.c
-)
+set(sources
+    src/Collection/stack.c
+    src/Collection/queue.c
+    src/Collection/list.c)
+    
+add_library(${CMAKE_PROJECT_NAME} ${headers} ${sources})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
   "${CMAKE_CURRENT_SOURCE_DIR}/headers"
