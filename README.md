@@ -9,10 +9,3 @@ The project is a library regrouping several generic collections :
 # Iterable Collections
 
 This collections are iterable.
-
-
-# How use the library
-
-TODO (Do an example of project)
-
-
