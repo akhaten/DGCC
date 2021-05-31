@@ -1,6 +1,4 @@
-# DGCC
-
-# Dynamic Generic C Collection
+# DGCC : Dynamic Generic C Collection
 
 The project is a library regrouping several generic collections :
 
