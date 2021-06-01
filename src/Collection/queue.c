@@ -125,8 +125,107 @@ Queue queue_pop(Queue q){
 void queue_map(Queue q, void* f(void *e)){
 
   assert( (q != NULL) );
+
   for(Node cur = q->sentinel->next; cur != q->sentinel; cur = cur->next)
     cur->value = f(cur->value);
   
+}
+
+struct s_QueueIterator {
+  Node sentinel; 
+  Node cur;
+  bool *mutation;
+};
+
+QueueIterator queueiterator_new(Queue l){
+  
+  assert( l != NULL );
+
+  QueueIterator iter = malloc(sizeof(struct s_QueueIterator));
+  
+  if(!iter){
+    perror("queueiterator_new()");
+    exit(ITERATOR_INIT);
+  }
+  
+  iter->sentinel = l->sentinel;
+  iter->cur = iter->sentinel;
+  l->mutation = false;
+  iter->mutation = &l->mutation;
+  
+
+  return iter;
+
+}
+
+void queueiterator_destruct(QueueIterator iter){
+
+  assert( (iter != NULL) );
+  
+  free(iter);
+  iter = NULL;
+
+}
+
+bool queueiterator_mutation(QueueIterator iter){
+  
+  assert( (iter != NULL) );
+  
+  return iter->mutation;
+
+}
+
+bool queueiterator_isValid(QueueIterator iter){
+
+  assert( (iter != NULL) );
+  
+  return iter->sentinel != NULL;
+
+}
+
+QueueIterator queueiterator_reset(QueueIterator iter){
+  
+  assert( (iter != NULL) && (queueiterator_isValid(iter)) );
+  
+  iter->cur = iter->sentinel;
+  
+  return iter;
+
+}
+
+
+bool queueiterator_hasnext(QueueIterator iter){
+  
+  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+  
+  return iter->cur->next != iter->sentinel;
+
+}
+
+QueueIterator queueiterator_next(QueueIterator iter){
+  
+  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+
+  iter->cur = iter->cur->next;
+
+  return iter;
+
+}
+
+QueueIterator queueiterator_previous(QueueIterator iter){
+
+  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+
+  iter->cur = iter->cur->previous;
+
+  return iter;
+
+}
+
+void *queueiterator_value(QueueIterator iter){
+
+  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+
+  return iter->cur->value;
 
 }
