@@ -43,7 +43,7 @@ Stack stack_new(void){
 
 void stack_destruct(Stack s){
   
-  assert(s != NULL);
+  assert( (s != NULL) );
 
   while(!stack_isEmpty(s))
     stack_pop(s);
@@ -58,7 +58,7 @@ void stack_destruct(Stack s){
 
 int stack_size(const Stack s){
   
-  assert(s != NULL);
+  assert( (s != NULL) );
 
   return s->size;
 
@@ -66,7 +66,7 @@ int stack_size(const Stack s){
 
 bool stack_isEmpty(const Stack s){
 
-  assert(s != NULL);
+  assert( (s != NULL) );
   
   return !s->size;
 
@@ -140,7 +140,7 @@ struct s_StackIterator {
 
 StackIterator stackiterator_new(Stack s){
   
-  assert( s != NULL );
+  assert( (s != NULL) );
 
   StackIterator iter = malloc(sizeof(struct s_StackIterator));
   
