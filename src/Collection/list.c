@@ -269,6 +269,7 @@ ListIterator listiterator_new(List l){
 }
 
 void listiterator_destruct(ListIterator iter){
+  
   assert( (iter != NULL) );
   
   free(iter);
