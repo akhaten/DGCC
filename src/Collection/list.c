@@ -1,7 +1,5 @@
 
 #include "list.h"
-#include "queue.h"
-
 
 
 typedef struct s_Node {
@@ -43,6 +41,7 @@ List list_new(void){
 
 }
 
+
 void list_destruct(List l){
 
   assert( (l != NULL) );
@@ -58,6 +57,7 @@ void list_destruct(List l){
 
 }
 
+
 unsigned int list_size(const List l){
   
   assert( (l != NULL) );
@@ -66,6 +66,7 @@ unsigned int list_size(const List l){
 
 }
 
+
 bool list_isEmpty(const List l){
 
   assert( (l != NULL) );
@@ -73,6 +74,7 @@ bool list_isEmpty(const List l){
   return !l->size;
 
 }
+
 
 List list_add(List l, void *e){
 
@@ -98,6 +100,7 @@ List list_add(List l, void *e){
 
 }
 
+
 List list_remove(List l, const unsigned int index){
 
   assert( (l != NULL) && (index < list_size(l)) );
@@ -118,6 +121,7 @@ List list_remove(List l, const unsigned int index){
   return l;
 
 }
+
 
 List list_insert(List l, const unsigned int index, void *e){
 
@@ -147,6 +151,7 @@ List list_insert(List l, const unsigned int index, void *e){
 
 }
 
+
 void *list_get(const List l, const unsigned int index){
 
   assert( (l != NULL) && (!list_isEmpty(l)) && (0 <= index) && (index < list_size(l)) );
@@ -160,6 +165,7 @@ void *list_get(const List l, const unsigned int index){
 
 }
 
+
 List list_map(List l, void* f(void *e)){
   
   assert( (l != NULL) );
@@ -172,6 +178,7 @@ List list_map(List l, void* f(void *e)){
   return l;
 
 }
+
 
 List list_sublist(const List l, const unsigned int index1, const unsigned int index2){
 
@@ -196,6 +203,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
 
 }
 
+
 bool list_exists(const List l, bool predicate(void *e)){
 
   assert( (l != NULL) );
@@ -211,6 +219,7 @@ bool list_exists(const List l, bool predicate(void *e)){
   return find;
 
 }
+
 
 bool list_forall(const List l, bool predicate(void *e)){
   
@@ -228,6 +237,7 @@ bool list_forall(const List l, bool predicate(void *e)){
 
 }
 
+
 List list_copy(List l){
 
   assert( (l != NULL) && (!list_isEmpty(l)) );
@@ -241,11 +251,13 @@ List list_copy(List l){
 
 }
 
+
 struct s_ListIterator {
   Node sentinel; 
   Node cur;
   bool *mutation;
 };
+
 
 ListIterator listiterator_new(List l){
   
@@ -268,6 +280,7 @@ ListIterator listiterator_new(List l){
 
 }
 
+
 void listiterator_destruct(ListIterator iter){
   
   assert( (iter != NULL) );
@@ -277,6 +290,7 @@ void listiterator_destruct(ListIterator iter){
 
 }
 
+
 bool listiterator_mutation(ListIterator iter){
   
   assert( (iter != NULL) );
@@ -285,6 +299,7 @@ bool listiterator_mutation(ListIterator iter){
 
 }
 
+
 bool listiterator_isValid(ListIterator iter){
 
   assert( (iter != NULL) );
@@ -292,6 +307,7 @@ bool listiterator_isValid(ListIterator iter){
   return iter->sentinel != NULL;
 
 }
+
 
 ListIterator listiterator_reset(ListIterator iter){
   
@@ -312,6 +328,7 @@ bool listiterator_hasnext(ListIterator iter){
 
 }
 
+
 ListIterator listiterator_next(ListIterator iter){
   
   assert( (iter != NULL) && (listiterator_mutation(iter)) );
@@ -321,6 +338,7 @@ ListIterator listiterator_next(ListIterator iter){
   return iter;
 
 }
+
 
 ListIterator listiterator_previous(ListIterator iter){
 
@@ -332,6 +350,7 @@ ListIterator listiterator_previous(ListIterator iter){
 
 }
 
+
 void *listiterator_value(ListIterator iter){
 
   assert( (iter != NULL) && (listiterator_mutation(iter)) );
@@ -339,7 +358,3 @@ void *listiterator_value(ListIterator iter){
   return iter->cur->value;
 
 }
-
-
-
-

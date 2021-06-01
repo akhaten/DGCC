@@ -6,8 +6,8 @@
 #ifndef __QUEUE_H__
 #define __QUEUE_H__
 
-
 #include "includes.h"
+
 
 /**
  * \struct Queue
@@ -15,12 +15,14 @@
  */
 typedef struct s_Queue* Queue;
 
+
 /**
  * \brief Create new queue
  * \post queue_isEmpty(queue_new()) == true
  * \return queue
  */
 Queue queue_new(void);
+
 
 /**
  * \brief Delete the queue
@@ -30,6 +32,7 @@ Queue queue_new(void);
  */
 void queue_destruct(Queue s);
 
+
 /**
  * \brief Get the size of queue
  * \param[in,out] q : queue
@@ -38,6 +41,7 @@ void queue_destruct(Queue s);
  */
 int queue_size(const Queue s);
 
+
 /**
  * \brief Know if the queue is empty
  * \param[in,out] q : queue
@@ -45,6 +49,7 @@ int queue_size(const Queue s);
  * \return Queue is empty ?
  */
 bool queue_isEmpty(const Queue s);
+
 
 /**
  * \brief Get the element from the top of queue
@@ -64,6 +69,7 @@ void* queue_top(const Queue s);
  */
 Queue queue_push(Queue s, void *e);
 
+
 /**
  * \brief Remove element in queue
  * \param[in,out] q : queue
@@ -71,6 +77,7 @@ Queue queue_push(Queue s, void *e);
  * \return queue modified
  */
 Queue queue_pop(Queue s);
+
 
 /**
  * \brief Apply a function on elements of the queue
@@ -82,7 +89,7 @@ void queue_map(Queue s, void* f(void *e));
 
 
 /**
- * \struct Queue
+ * \struct QueueIterator
  * \brief Data structure for iterator of queue
  * \note The iterator is not valid if there
  * are mutations in the queue (push, pop...).
@@ -92,6 +99,7 @@ void queue_map(Queue s, void* f(void *e));
  */
 typedef struct s_QueueIterator* QueueIterator;
 
+
 /**
  * \brief Create a queue iterartor
  * \param[in] q : queue
@@ -99,6 +107,7 @@ typedef struct s_QueueIterator* QueueIterator;
  * \pre (q != NULL)
  */
 QueueIterator queueiterator_new(Queue q);
+
 
 /**
  * \brief Destroy the iterator
@@ -108,6 +117,7 @@ QueueIterator queueiterator_new(Queue q);
  */
 void queueiterator_destruct(QueueIterator iter);
 
+
 /**
  * \brief Reset the iterator
  * \param[in,out] iter : queue iterator
@@ -115,6 +125,7 @@ void queueiterator_destruct(QueueIterator iter);
  * \pre (iter != NULL)
  */
 QueueIterator queueiterator_reset(QueueIterator iter);
+
 
 /**
  * \brief Check if there is a next element
@@ -125,6 +136,7 @@ QueueIterator queueiterator_reset(QueueIterator iter);
  */
 bool queueiterator_hasnext(QueueIterator iter);
 
+
 /**
  * \brief Move queue iterator to next
  * \param[in,out] iter : queue iterator
@@ -133,6 +145,7 @@ bool queueiterator_hasnext(QueueIterator iter);
  * \warning The queue of iterator must be valid.
  */
 QueueIterator queueiterator_next(QueueIterator iter);
+
 
 /**
  * \brief Move queue iterator to previous
@@ -143,6 +156,7 @@ QueueIterator queueiterator_next(QueueIterator iter);
  */
 QueueIterator queueiterator_previous(QueueIterator iter);
 
+
 /**
  * \brief Get the value of queue iterator
  * \param[in] iter : queue iterator
@@ -152,5 +166,6 @@ QueueIterator queueiterator_previous(QueueIterator iter);
  * \note queueiterator_value(queueiterator_new(Queue q)) == NULL
  */
 void *queueiterator_value(QueueIterator iter);
+
 
 #endif

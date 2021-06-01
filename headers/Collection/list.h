@@ -8,6 +8,7 @@
 
 #include "includes.h"
 
+
 /**
  * \struct List
  * \brief Data structure for collection of element
@@ -15,12 +16,14 @@
  */
 typedef struct s_List* List;
 
+
 /**
  * \brief Create a list empty
  * \return a list
  * \post (list_new() != NULL) && (list_isEmpty(list_new()) == 1)
  */
 List list_new(void);
+
 
 /**
  * \brief Destruct the list
@@ -30,6 +33,7 @@ List list_new(void);
  */
 void list_destruct(List l);
 
+
 /**
  * \brief Get the size of the list
  * \param[in] l : list
@@ -38,6 +42,7 @@ void list_destruct(List l);
  */
 unsigned int list_size(const List l);
 
+
 /**
  * \brief Know if a list is empty
  * \param[in] l : list
@@ -45,6 +50,7 @@ unsigned int list_size(const List l);
  * \pre (l != NULL)
  */
 bool list_isEmpty(const List l);
+
 
 /**
  * \brief Add an element in the list
@@ -55,6 +61,7 @@ bool list_isEmpty(const List l);
  */
 List list_add(List l, void *e);
 
+
 /**
  * \brief Remove element from the list
  * \param[in,out] l : list
@@ -63,6 +70,7 @@ List list_add(List l, void *e);
  * \pre (l != NULL) && (index < list_size(l))
  */
 List list_remove(List l, const unsigned int index);
+
 
 /**
  * \brief Insert an element at index in list.
@@ -75,6 +83,7 @@ List list_remove(List l, const unsigned int index);
  */
 List list_insert(List l, const unsigned int index, void *e);
 
+
 /**
  * \brief Obtain element at index from list
  * \param[in] l : list
@@ -84,6 +93,7 @@ List list_insert(List l, const unsigned int index, void *e);
  */
 void *list_get(const List l, const unsigned int index);
 
+
 /**
  * \brief Apply the function f on the list
  * \param[in,out] l : list
@@ -92,6 +102,7 @@ void *list_get(const List l, const unsigned int index);
  * \pre (l != NULL)
  */
 List list_map(List l, void* f(void *e));
+
 
 /**
  * \brief Create a view/sublist with a list
@@ -103,6 +114,7 @@ List list_map(List l, void* f(void *e));
  */
 List list_sublist(const List l, const unsigned int index1, const unsigned int index2);
 
+
 /**
  * \brief Check if it exists an element checking a predicate
  * \param[in] l : list
@@ -111,6 +123,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
  */
 bool list_exists(const List l, bool predicate(void *e));
 
+
 /**
  * \brief Check if all elements check the predicat
  * \param[in] l : list
@@ -118,6 +131,7 @@ bool list_exists(const List l, bool predicate(void *e));
  * \return 0 if it exists an element e such as predicate(e) == 0
  */
 bool list_forall(const List l, bool predicate(void *e));
+
 
 /**
  * \brief Copy a list
@@ -128,7 +142,7 @@ List list_copy(List l);
 
 
 /**
- * \struct List
+ * \struct ListIterator
  * \brief Data structure for iterator of list
  * \note The iterator is not valid if there
  * are mutations in the list (add, remove...).
@@ -138,6 +152,7 @@ List list_copy(List l);
  */
 typedef struct s_ListIterator* ListIterator;
 
+
 /**
  * \brief Create a list iterartor
  * \param[in] l : list
@@ -145,6 +160,7 @@ typedef struct s_ListIterator* ListIterator;
  * \pre (l != NULL)
  */
 ListIterator listiterator_new(List l);
+
 
 /**
  * \brief Destroy the iterator
@@ -154,6 +170,7 @@ ListIterator listiterator_new(List l);
  */
 void listiterator_destruct(ListIterator iter);
 
+
 /**
  * \brief Reset the iterator
  * \param[in,out] iter : list iterator
@@ -161,6 +178,7 @@ void listiterator_destruct(ListIterator iter);
  * \pre (iter != NULL)
  */
 ListIterator listiterator_reset(ListIterator iter);
+
 
 /**
  * \brief Check if there is a next element
@@ -171,6 +189,7 @@ ListIterator listiterator_reset(ListIterator iter);
  */
 bool listiterator_hasnext(ListIterator iter);
 
+
 /**
  * \brief Move list iterator to next
  * \param[in,out] iter : list iterator
@@ -180,6 +199,7 @@ bool listiterator_hasnext(ListIterator iter);
  */
 ListIterator listiterator_next(ListIterator iter);
 
+
 /**
  * \brief Move list iterator to previous
  * \param[in,out] iter : list iterator
@@ -188,6 +208,7 @@ ListIterator listiterator_next(ListIterator iter);
  * \warning The list of iterator must be valid.
  */
 ListIterator listiterator_previous(ListIterator iter);
+
 
 /**
  * \brief Get the value of list iterator
@@ -200,7 +221,4 @@ ListIterator listiterator_previous(ListIterator iter);
 void *listiterator_value(ListIterator iter);
 
 
-
 #endif
-
-

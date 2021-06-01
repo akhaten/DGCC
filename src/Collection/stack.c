@@ -41,6 +41,7 @@ Stack stack_new(void){
 
 }
 
+
 void stack_destruct(Stack s){
   
   assert( (s != NULL) );
@@ -56,6 +57,7 @@ void stack_destruct(Stack s){
 
 }
 
+
 int stack_size(const Stack s){
   
   assert( (s != NULL) );
@@ -63,6 +65,7 @@ int stack_size(const Stack s){
   return s->size;
 
 }
+
 
 bool stack_isEmpty(const Stack s){
 
@@ -72,6 +75,7 @@ bool stack_isEmpty(const Stack s){
 
 }
 
+
 void* stack_top(const Stack s){
 
   assert( (s != NULL) && (!stack_isEmpty(s)) );
@@ -79,6 +83,7 @@ void* stack_top(const Stack s){
   return s->sentinel->next->value;
 
 }
+
 
 Stack stack_push(Stack s, void *e){
 
@@ -104,6 +109,7 @@ Stack stack_push(Stack s, void *e){
 
 }
 
+
 Stack stack_pop(Stack s){
 
   assert( (s != NULL) );
@@ -123,6 +129,7 @@ Stack stack_pop(Stack s){
 
 }
 
+
 void stack_map(Stack s, void* f(void *e)){
 
   assert( (s != NULL) );
@@ -132,11 +139,13 @@ void stack_map(Stack s, void* f(void *e)){
   
 }
 
+
 struct s_StackIterator {
   Node sentinel; 
   Node cur;
   bool *mutation;
 };
+
 
 StackIterator stackiterator_new(Stack s){
   
@@ -159,6 +168,7 @@ StackIterator stackiterator_new(Stack s){
 
 }
 
+
 void stackiterator_destruct(StackIterator iter){
 
   assert( (iter != NULL) );
@@ -168,6 +178,7 @@ void stackiterator_destruct(StackIterator iter){
 
 }
 
+
 bool stackiterator_mutation(StackIterator iter){
   
   assert( (iter != NULL) );
@@ -176,6 +187,7 @@ bool stackiterator_mutation(StackIterator iter){
 
 }
 
+
 bool stackiterator_isValid(StackIterator iter){
 
   assert( (iter != NULL) );
@@ -183,6 +195,7 @@ bool stackiterator_isValid(StackIterator iter){
   return iter->sentinel != NULL;
 
 }
+
 
 StackIterator stackiterator_reset(StackIterator iter){
   
@@ -195,6 +208,7 @@ StackIterator stackiterator_reset(StackIterator iter){
 }
 
 
+
 bool stackiterator_hasnext(StackIterator iter){
   
   assert( (iter != NULL) && (stackiterator_mutation(iter)) );
@@ -202,6 +216,7 @@ bool stackiterator_hasnext(StackIterator iter){
   return iter->cur->next != iter->sentinel;
 
 }
+
 
 StackIterator stackiterator_next(StackIterator iter){
   
@@ -213,6 +228,7 @@ StackIterator stackiterator_next(StackIterator iter){
 
 }
 
+
 StackIterator stackiterator_previous(StackIterator iter){
 
   assert( (iter != NULL) && (stackiterator_mutation(iter)) );
@@ -223,6 +239,7 @@ StackIterator stackiterator_previous(StackIterator iter){
 
 }
 
+
 void *stackiterator_value(StackIterator iter){
 
   assert( (iter != NULL) && (stackiterator_mutation(iter)) );
@@ -230,6 +247,3 @@ void *stackiterator_value(StackIterator iter){
   return iter->cur->value;
 
 }
-
-
-

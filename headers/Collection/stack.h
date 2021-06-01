@@ -8,9 +8,6 @@
 
 #include "includes.h"
 
-/**
- * \section Stack
- */
 
 /**
  * \struct Stack
@@ -18,12 +15,14 @@
  */
 typedef struct s_Stack *Stack;
 
+
 /**
  * \brief Create new stack
  * \post stack_isEmpty(stack_new()) == true
  * \return stack
  */
 Stack stack_new(void);
+
 
 /**
  * \brief Delete the stack
@@ -33,6 +32,7 @@ Stack stack_new(void);
  */
 void stack_destruct(Stack s);
 
+
 /**
  * \brief Get the size of stack
  * \param[in,out] s : stack
@@ -41,6 +41,7 @@ void stack_destruct(Stack s);
  */
 int stack_size(const Stack s);
 
+
 /**
  * \brief Know if the stack is empty
  * \param[in,out] s : stack
@@ -48,6 +49,7 @@ int stack_size(const Stack s);
  * \return Stack is empty ?
  */
 bool stack_isEmpty(const Stack s);
+
 
 /**
  * \brief Get the element from the top of stack
@@ -67,6 +69,7 @@ void* stack_top(const Stack s);
  */
 Stack stack_push(Stack s, void *e);
 
+
 /**
  * \brief Remove element in stack
  * \param[in,out] s : stack
@@ -74,6 +77,7 @@ Stack stack_push(Stack s, void *e);
  * \return stack modified
  */
 Stack stack_pop(Stack s);
+
 
 /**
  * \brief Apply the function f on elements of the stack
@@ -83,8 +87,9 @@ Stack stack_pop(Stack s);
  */
 void stack_map(Stack s, void* f(void *e));
 
+
 /**
- * \struct Stack
+ * \struct StackIterator
  * \brief Data structure for iterator of stack
  * \note The iterator is not valid if there
  * are mutations in the stack (push, pop...).
@@ -94,6 +99,7 @@ void stack_map(Stack s, void* f(void *e));
  */
 typedef struct s_StackIterator* StackIterator;
 
+
 /**
  * \brief Create a stack iterartor
  * \param[in] s : stack
@@ -101,6 +107,7 @@ typedef struct s_StackIterator* StackIterator;
  * \pre (s != NULL)
  */
 StackIterator stackiterator_new(Stack s);
+
 
 /**
  * \brief Destroy the iterator
@@ -110,6 +117,7 @@ StackIterator stackiterator_new(Stack s);
  */
 void stackiterator_destruct(StackIterator iter);
 
+
 /**
  * \brief Reset the iterator
  * \param[in,out] iter : stack iterator
@@ -117,6 +125,7 @@ void stackiterator_destruct(StackIterator iter);
  * \pre (iter != NULL)
  */
 StackIterator stackiterator_reset(StackIterator iter);
+
 
 /**
  * \brief Check if there is a next element
@@ -127,6 +136,7 @@ StackIterator stackiterator_reset(StackIterator iter);
  */
 bool stackiterator_hasnext(StackIterator iter);
 
+
 /**
  * \brief Move stack iterator to next
  * \param[in,out] iter : stack iterator
@@ -135,6 +145,7 @@ bool stackiterator_hasnext(StackIterator iter);
  * \warning The stack of iterator must be valid.
  */
 StackIterator stackiterator_next(StackIterator iter);
+
 
 /**
  * \brief Move stack iterator to previous
@@ -145,6 +156,7 @@ StackIterator stackiterator_next(StackIterator iter);
  */
 StackIterator stackiterator_previous(StackIterator iter);
 
+
 /**
  * \brief Get the value of stack iterator
  * \param[in] iter : stack iterator
@@ -154,5 +166,6 @@ StackIterator stackiterator_previous(StackIterator iter);
  * \note stackiterator_value(stackiterator_new(Stack s)) == NULL
  */
 void *stackiterator_value(StackIterator iter);
+
 
 #endif
