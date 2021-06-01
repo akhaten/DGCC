@@ -42,7 +42,7 @@ Queue queue_new(void){
 
 void queue_destruct(Queue q){
   
-  assert(q != NULL);
+  assert( (q != NULL) );
 
   while(!queue_isEmpty(q))
     queue_pop(q);
@@ -57,7 +57,7 @@ void queue_destruct(Queue q){
 
 int queue_size(const Queue q){
   
-  assert(q != NULL);
+  assert( (q != NULL) );
 
   return q->size;
 
@@ -65,7 +65,7 @@ int queue_size(const Queue q){
 
 bool queue_isEmpty(const Queue q){
 
-  assert(q != NULL);
+  assert( (q != NULL) );
   
   return !q->size;
 
@@ -137,9 +137,9 @@ struct s_QueueIterator {
   bool *mutation;
 };
 
-QueueIterator queueiterator_new(Queue l){
+QueueIterator queueiterator_new(Queue q){
   
-  assert( l != NULL );
+  assert( (q != NULL) );
 
   QueueIterator iter = malloc(sizeof(struct s_QueueIterator));
   
@@ -148,10 +148,10 @@ QueueIterator queueiterator_new(Queue l){
     exit(ITERATOR_INIT);
   }
   
-  iter->sentinel = l->sentinel;
+  iter->sentinel = q->sentinel;
   iter->cur = iter->sentinel;
-  l->mutation = false;
-  iter->mutation = &l->mutation;
+  q->mutation = false;
+  iter->mutation = &q->mutation;
   
 
   return iter;
