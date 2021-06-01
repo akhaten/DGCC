@@ -29,7 +29,7 @@ List list_new(void){
   l->sentinel = malloc(sizeof(struct s_Node));
   
   if(!l->sentinel){
-    perror("list_new");
+    perror("list_new()");
     exit(SENTINEL_INIT);
   }
 
@@ -45,7 +45,7 @@ List list_new(void){
 
 void list_destruct(List l){
 
-  assert(l != NULL);
+  assert( (l != NULL) );
 
   while(!list_isEmpty(l))
     list_remove(l,0);
@@ -60,7 +60,7 @@ void list_destruct(List l){
 
 unsigned int list_size(const List l){
   
-  assert(l != NULL);
+  assert( (l != NULL) );
 
   return l->size;
 
@@ -68,7 +68,7 @@ unsigned int list_size(const List l){
 
 bool list_isEmpty(const List l){
 
-  assert(l != NULL);
+  assert( (l != NULL) );
   
   return !l->size;
 
@@ -175,7 +175,7 @@ List list_map(List l, void* f(void *e)){
 
 List list_sublist(const List l, const unsigned int index1, const unsigned int index2){
 
-  assert((l != NULL) && (0 <= index1) && (index1 <= index2) && (index2 < list_size(l)));
+  assert( (l != NULL) && (0 <= index1) && (index1 <= index2) && (index2 < list_size(l)) );
   
   List sublist = list_new();
   Node cur = l->sentinel->next;
@@ -198,7 +198,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
 
 bool list_exists(const List l, bool predicate(void *e)){
 
-  assert(l != NULL);
+  assert( (l != NULL) );
 
   Node cur = l->sentinel->next;
   int find = false;
@@ -214,7 +214,7 @@ bool list_exists(const List l, bool predicate(void *e)){
 
 bool list_forall(const List l, bool predicate(void *e)){
   
-  assert(l != NULL);
+  assert( (l != NULL) );
 
   Node cur = l->sentinel->next;
   int check = true;
@@ -249,7 +249,7 @@ struct s_ListIterator {
 
 ListIterator listiterator_new(List l){
   
-  assert( l != NULL );
+  assert( (l != NULL) );
 
   ListIterator iter = malloc(sizeof(struct s_ListIterator));
   
@@ -278,7 +278,7 @@ void listiterator_destruct(ListIterator iter){
 
 bool listiterator_mutation(ListIterator iter){
   
-  assert(iter != NULL);
+  assert( (iter != NULL) );
   
   return iter->mutation;
 
@@ -286,7 +286,7 @@ bool listiterator_mutation(ListIterator iter){
 
 bool listiterator_isValid(ListIterator iter){
 
-  assert(iter != NULL);
+  assert( (iter != NULL) );
   
   return iter->sentinel != NULL;
 
@@ -294,7 +294,7 @@ bool listiterator_isValid(ListIterator iter){
 
 ListIterator listiterator_reset(ListIterator iter){
   
-  assert( (iter != NULL) && listiterator_isValid(iter) );
+  assert( (iter != NULL) && (listiterator_isValid(iter)) );
   
   iter->cur = iter->sentinel;
   
