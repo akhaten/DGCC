@@ -9,3 +9,4 @@ The project is a library regrouping several generic collections :
 # Iterable Collections
 
 This collections are iterable.
+Moreover, "foreach loops" have been created for each collection.

@@ -1,5 +1,5 @@
-
 #include "list.h"
+#include "listiterator.h"
 
 
 typedef struct s_Node {
@@ -42,7 +42,7 @@ List list_new(void){
 }
 
 
-void list_destruct(List l){
+void *list_destruct(List l){
 
   assert( (l != NULL) );
 
@@ -54,6 +54,7 @@ void list_destruct(List l){
   
   free(l);
   l = NULL;
+  return NULL;
 
 }
 
@@ -253,9 +254,8 @@ List list_copy(List l){
 
 
 struct s_ListIterator {
-  Node sentinel; 
+  List l; 
   Node cur;
-  bool *mutation;
 };
 
 
@@ -270,24 +270,22 @@ ListIterator listiterator_new(List l){
     exit(ITERATOR_INIT);
   }
   
-  iter->sentinel = l->sentinel;
-  iter->cur = iter->sentinel;
+  iter->l = l;
+  iter->cur = l->sentinel->next;
   l->mutation = false;
-  iter->mutation = &l->mutation;
   
-
   return iter;
 
 }
 
 
-void listiterator_destruct(ListIterator iter){
+void *listiterator_destruct(ListIterator iter){
   
   assert( (iter != NULL) );
   
   free(iter);
   iter = NULL;
-
+  return NULL;
 }
 
 
@@ -295,7 +293,7 @@ bool listiterator_mutation(ListIterator iter){
   
   assert( (iter != NULL) );
   
-  return iter->mutation;
+  return iter->l->mutation;
 
 }
 
@@ -304,7 +302,7 @@ bool listiterator_isValid(ListIterator iter){
 
   assert( (iter != NULL) );
   
-  return iter->sentinel != NULL;
+  return iter->l != NULL;
 
 }
 
@@ -313,7 +311,7 @@ ListIterator listiterator_reset(ListIterator iter){
   
   assert( (iter != NULL) && (listiterator_isValid(iter)) );
   
-  iter->cur = iter->sentinel;
+  iter->cur = iter->l->sentinel->next;
   
   return iter;
 
@@ -322,16 +320,16 @@ ListIterator listiterator_reset(ListIterator iter){
 
 bool listiterator_hasnext(ListIterator iter){
   
-  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!listiterator_mutation(iter)) );
   
-  return iter->cur->next != iter->sentinel;
+  return iter->cur != iter->l->sentinel;
 
 }
 
 
 ListIterator listiterator_next(ListIterator iter){
   
-  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!listiterator_mutation(iter)) );
 
   iter->cur = iter->cur->next;
 
@@ -342,7 +340,7 @@ ListIterator listiterator_next(ListIterator iter){
 
 ListIterator listiterator_previous(ListIterator iter){
 
-  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!listiterator_mutation(iter)) );
 
   iter->cur = iter->cur->previous;
 
@@ -353,7 +351,7 @@ ListIterator listiterator_previous(ListIterator iter){
 
 void *listiterator_value(ListIterator iter){
 
-  assert( (iter != NULL) && (listiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!listiterator_mutation(iter)) );
 
   return iter->cur->value;
 

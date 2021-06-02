@@ -1,5 +1,6 @@
 
 #include "stack.h"
+#include "stackiterator.h"
 
 
 typedef struct s_Node {
@@ -141,9 +142,8 @@ void stack_map(Stack s, void* f(void *e)){
 
 
 struct s_StackIterator {
-  Node sentinel; 
+  Stack s; 
   Node cur;
-  bool *mutation;
 };
 
 
@@ -158,23 +158,23 @@ StackIterator stackiterator_new(Stack s){
     exit(ITERATOR_INIT);
   }
   
-  iter->sentinel = s->sentinel;
-  iter->cur = iter->sentinel;
+  iter->s = s;
+  iter->cur = iter->s->sentinel->next;
   s->mutation = false;
-  iter->mutation = &s->mutation;
   
-
   return iter;
 
 }
 
 
-void stackiterator_destruct(StackIterator iter){
+void *stackiterator_destruct(StackIterator iter){
 
   assert( (iter != NULL) );
   
   free(iter);
   iter = NULL;
+
+  return NULL;
 
 }
 
@@ -183,7 +183,7 @@ bool stackiterator_mutation(StackIterator iter){
   
   assert( (iter != NULL) );
   
-  return iter->mutation;
+  return iter->s->mutation;
 
 }
 
@@ -192,7 +192,7 @@ bool stackiterator_isValid(StackIterator iter){
 
   assert( (iter != NULL) );
   
-  return iter->sentinel != NULL;
+  return iter->s != NULL;
 
 }
 
@@ -201,7 +201,7 @@ StackIterator stackiterator_reset(StackIterator iter){
   
   assert( (iter != NULL) && (stackiterator_isValid(iter)) );
   
-  iter->cur = iter->sentinel;
+  iter->cur = iter->s->sentinel->next;
   
   return iter;
 
@@ -211,16 +211,16 @@ StackIterator stackiterator_reset(StackIterator iter){
 
 bool stackiterator_hasnext(StackIterator iter){
   
-  assert( (iter != NULL) && (stackiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!stackiterator_mutation(iter)) );
   
-  return iter->cur->next != iter->sentinel;
+  return iter->cur != iter->s->sentinel;
 
 }
 
 
 StackIterator stackiterator_next(StackIterator iter){
   
-  assert( (iter != NULL) && (stackiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!stackiterator_mutation(iter)) );
 
   iter->cur = iter->cur->next;
 
@@ -231,7 +231,7 @@ StackIterator stackiterator_next(StackIterator iter){
 
 StackIterator stackiterator_previous(StackIterator iter){
 
-  assert( (iter != NULL) && (stackiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!stackiterator_mutation(iter)) );
 
   iter->cur = iter->cur->previous;
 
@@ -242,7 +242,7 @@ StackIterator stackiterator_previous(StackIterator iter){
 
 void *stackiterator_value(StackIterator iter){
 
-  assert( (iter != NULL) && (stackiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!stackiterator_mutation(iter)) );
 
   return iter->cur->value;
 

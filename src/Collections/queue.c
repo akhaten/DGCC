@@ -1,5 +1,6 @@
 
 #include "queue.h"
+#include "queueiterator.h"
 
 
 typedef struct s_Node {
@@ -42,7 +43,7 @@ Queue queue_new(void){
 }
 
 
-void queue_destruct(Queue q){
+void *queue_destruct(Queue q){
   
   assert( (q != NULL) );
 
@@ -54,6 +55,7 @@ void queue_destruct(Queue q){
   
   free(q);
   q = NULL;
+  return NULL;
 
 }
 
@@ -141,9 +143,8 @@ void queue_map(Queue q, void* f(void *e)){
 
 
 struct s_QueueIterator {
-  Node sentinel; 
+  Queue q;
   Node cur;
-  bool *mutation;
 };
 
 
@@ -158,23 +159,23 @@ QueueIterator queueiterator_new(Queue q){
     exit(ITERATOR_INIT);
   }
   
-  iter->sentinel = q->sentinel;
-  iter->cur = iter->sentinel;
+  iter->q = q;
+  iter->cur = iter->q->sentinel->next;
   q->mutation = false;
-  iter->mutation = &q->mutation;
-  
 
   return iter;
 
 }
 
 
-void queueiterator_destruct(QueueIterator iter){
+void *queueiterator_destruct(QueueIterator iter){
 
   assert( (iter != NULL) );
   
   free(iter);
   iter = NULL;
+
+  return NULL;
 
 }
 
@@ -183,7 +184,7 @@ bool queueiterator_mutation(QueueIterator iter){
   
   assert( (iter != NULL) );
   
-  return iter->mutation;
+  return iter->q->mutation;
 
 }
 
@@ -192,7 +193,7 @@ bool queueiterator_isValid(QueueIterator iter){
 
   assert( (iter != NULL) );
   
-  return iter->sentinel != NULL;
+  return iter->q != NULL;
 
 }
 
@@ -201,7 +202,7 @@ QueueIterator queueiterator_reset(QueueIterator iter){
   
   assert( (iter != NULL) && (queueiterator_isValid(iter)) );
   
-  iter->cur = iter->sentinel;
+  iter->cur = iter->q->sentinel->next;
   
   return iter;
 
@@ -210,16 +211,16 @@ QueueIterator queueiterator_reset(QueueIterator iter){
 
 bool queueiterator_hasnext(QueueIterator iter){
   
-  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!queueiterator_mutation(iter)) );
   
-  return iter->cur->next != iter->sentinel;
+  return iter->cur != iter->q->sentinel;
 
 }
 
 
 QueueIterator queueiterator_next(QueueIterator iter){
   
-  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!queueiterator_mutation(iter)) );
 
   iter->cur = iter->cur->next;
 
@@ -230,7 +231,7 @@ QueueIterator queueiterator_next(QueueIterator iter){
 
 QueueIterator queueiterator_previous(QueueIterator iter){
 
-  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!queueiterator_mutation(iter)) );
 
   iter->cur = iter->cur->previous;
 
@@ -241,7 +242,7 @@ QueueIterator queueiterator_previous(QueueIterator iter){
 
 void *queueiterator_value(QueueIterator iter){
 
-  assert( (iter != NULL) && (queueiterator_mutation(iter)) );
+  assert( (iter != NULL) && (!queueiterator_mutation(iter)) );
 
   return iter->cur->value;
 
