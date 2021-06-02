@@ -6,3 +6,4 @@ INPUT                  = @doxy_main_page@ \
 FILE_PATTERNS          = *.h *.md
 RECURSIVE              = YES
 USE_MDFILE_AS_MAINPAGE = README.md
+GENERATE_TREEVIEW = YES
