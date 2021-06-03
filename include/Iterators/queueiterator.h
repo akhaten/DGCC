@@ -1,3 +1,8 @@
+/**
+ * \author Jessy Khafif
+ * \file queueiterator.h
+ */
+
 #ifndef __QUEUE_ITERATOR_H__
 #define __QUEUE_ITERATOR_H__
 
@@ -30,6 +35,7 @@ QueueIterator queueiterator_new(Queue q);
 /**
  * \brief Destroy the iterator
  * \param[in,out] iter : queue iterator
+ * \return NULL
  * \pre (iter != NULL)
  * \post (iter == NULL)
  */

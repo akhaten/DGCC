@@ -1,3 +1,8 @@
+/**
+ * \author Jessy Khafif
+ * \file stackiterator.h
+ */
+
 #ifndef __STACK_ITERATOR_H__
 #define __STACK_ITERATOR_H__
 
@@ -30,6 +35,7 @@ StackIterator stackiterator_new(Stack s);
 /**
  * \brief Destroy the iterator
  * \param[in,out] iter : stack iterator
+ * \return NULL
  * \pre (iter != NULL)
  * \post (iter == NULL)
  */

@@ -1,5 +1,11 @@
+/**
+ * \author Jessy Khafif
+ * \file listiterator.h
+ */
+
 #ifndef __LIST_ITERATOR_H__
 #define __LIST_ITERATOR_H__
+
 
 /**
  * \struct ListIterator
@@ -29,6 +35,7 @@ ListIterator listiterator_new(List l);
 /**
  * \brief Destroy the iterator
  * \param[in,out] iter : list iterator
+ * \return NULL
  * \pre (iter != NULL)
  * \post (iter == NULL)
  */
