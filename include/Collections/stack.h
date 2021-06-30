@@ -6,7 +6,8 @@
 #ifndef __STACK_H__
 #define __STACK_H__
 
-#include "includes.h"
+
+#include "types.h"
 
 
 /**
@@ -40,7 +41,7 @@ void stack_destruct(Stack s);
  * \pre (s != NULL)
  * \return size of stack
  */
-int stack_size(const Stack s);
+unsigned int stack_size(const Stack s);
 
 
 /**
@@ -58,7 +59,7 @@ bool stack_isEmpty(const Stack s);
  * \pre (s != NULL) && (stack_isEmpty(s) == 0)
  * \return the top element of stack
  */
-void* stack_top(const Stack s);
+GenericElement stack_top(const Stack s);
 
 
 /**
@@ -68,7 +69,7 @@ void* stack_top(const Stack s);
  * \pre (s != NULL) && (e != NULL)
  * \return stack modified
  */
-Stack stack_push(Stack s, void *e);
+Stack stack_push(Stack s, const GenericElement e);
 
 
 /**
@@ -86,7 +87,7 @@ Stack stack_pop(Stack s);
  * \param[in] f : function
  * \pre (s != NULL)
  */
-void stack_map(Stack s, void* f(void *e));
+void stack_map(Stack s, FunctionMap f);
 
 
 #endif

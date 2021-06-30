@@ -7,15 +7,6 @@
 
 
 /**
- * \include library C
- */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <assert.h>
-
-/**
  * \def error constants
  */
 
@@ -32,14 +23,6 @@
 #define ITERATOR_INIT 87
 #define ITERATOR_IS_NULL 86
 #define ITERATOR_INVALID 85
-
-/**
- * \typedef define a generic element
- */
-typedef void* GenericElement;
-
-
-
 
 
 #endif

@@ -1,17 +1,18 @@
 
 #include "stack.h"
 #include "stackiterator.h"
+#include "errors.h"
 
 
 typedef struct s_Node {
-  void *value;
+  GenericElement value;
   struct s_Node *previous;
   struct s_Node *next;
 } *Node;
 
 struct s_Stack {
   Node sentinel;
-  int size;
+  unsigned int size;
   bool mutation;
 };
 
@@ -59,7 +60,7 @@ void stack_destruct(Stack s){
 }
 
 
-int stack_size(const Stack s){
+unsigned int stack_size(const Stack s){
   
   assert( (s != NULL) );
 
@@ -77,7 +78,7 @@ bool stack_isEmpty(const Stack s){
 }
 
 
-void* stack_top(const Stack s){
+GenericElement stack_top(const Stack s){
 
   assert( (s != NULL) && (!stack_isEmpty(s)) );
 
@@ -86,7 +87,7 @@ void* stack_top(const Stack s){
 }
 
 
-Stack stack_push(Stack s, void *e){
+Stack stack_push(Stack s, GenericElement e){
 
   assert( (s != NULL) && (e != NULL) );
 
@@ -131,7 +132,7 @@ Stack stack_pop(Stack s){
 }
 
 
-void stack_map(Stack s, void* f(void *e)){
+void stack_map(Stack s, FunctionMap f){
 
   assert( (s != NULL) );
 
@@ -167,7 +168,7 @@ StackIterator stackiterator_new(Stack s){
 }
 
 
-void *stackiterator_destruct(StackIterator iter){
+GenericElement stackiterator_destruct(StackIterator iter){
 
   assert( (iter != NULL) );
   
@@ -240,7 +241,7 @@ StackIterator stackiterator_previous(StackIterator iter){
 }
 
 
-void *stackiterator_value(StackIterator iter){
+GenericElement stackiterator_value(StackIterator iter){
 
   assert( (iter != NULL) && (!stackiterator_mutation(iter)) );
 

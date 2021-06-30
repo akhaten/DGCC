@@ -6,7 +6,8 @@
 #ifndef __LIST_H__
 #define __LIST_H__
 
-#include "includes.h"
+
+#include "types.h"
 
 
 /**
@@ -31,7 +32,7 @@ List list_new(void);
  * \pre (l != NULL)
  * \post (l == NULL)
  */
-void *list_destruct(List l);
+GenericElement list_destruct(List l);
 
 
 /**
@@ -59,7 +60,7 @@ bool list_isEmpty(const List l);
  * \return list modified
  * \pre (l != NULL) and (e != NULL) 
  */
-List list_add(List l, void *e);
+List list_add(List l, const GenericElement e);
 
 
 /**
@@ -81,7 +82,7 @@ List list_remove(List l, const unsigned int index);
  * \return list modified
  * \pre (l != NULL) && (e != NULL) && (index < list_size(l))
  */
-List list_insert(List l, const unsigned int index, void *e);
+List list_insert(List l, const unsigned int index, const GenericElement e);
 
 
 /**
@@ -91,7 +92,7 @@ List list_insert(List l, const unsigned int index, void *e);
  * \return : element
  * \pre (l != NULL) && (!list_isEmpty(l)) && (index < list_size(l))
  */
-void *list_get(const List l, const unsigned int index);
+GenericElement list_get(const List l, const unsigned int index);
 
 
 /**
@@ -101,7 +102,9 @@ void *list_get(const List l, const unsigned int index);
  * \return list modified by f
  * \pre (l != NULL)
  */
-List list_map(List l, void* f(void *e));
+List list_map(List l, FunctionMap f);
+
+GenericElement list_reduce(List l, FunctionReduce f, GenericElement data);
 
 
 /**
@@ -121,7 +124,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
  * \param[in] predicate : predicate returning 0 if false
  * \return 0 if it doesn't exist an element e such as predicate(e) == 0
  */
-bool list_exists(const List l, bool predicate(void *e));
+bool list_exists(const List l, Predicate p);
 
 
 /**
@@ -130,7 +133,7 @@ bool list_exists(const List l, bool predicate(void *e));
  * \param[in] predicate : predicate returning 0 if false
  * \return 0 if it exists an element e such as predicate(e) == 0
  */
-bool list_forall(const List l, bool predicate(void *e));
+bool list_forall(const List l, Predicate p);
 
 
 /**
@@ -138,7 +141,10 @@ bool list_forall(const List l, bool predicate(void *e));
  * \param[in] l : list
  * \return list copied
  */
-List list_copy(List l);
+List list_copy(const List l);
+
+
+
 
 
 #endif

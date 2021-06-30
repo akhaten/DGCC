@@ -29,7 +29,7 @@ queueiterator_next(iter)) \
  * \return an iterator on the queue
  * \pre (q != NULL)
  */
-QueueIterator queueiterator_new(Queue q);
+QueueIterator queueiterator_new(const Queue q);
 
 
 /**
@@ -58,7 +58,7 @@ QueueIterator queueiterator_reset(QueueIterator iter);
  * \pre (iter != NULL)
  * \warning The queue of iterator must be valid.
  */
-bool queueiterator_hasnext(QueueIterator iter);
+bool queueiterator_hasnext(const QueueIterator iter);
 
 
 /**
@@ -89,7 +89,7 @@ QueueIterator queueiterator_previous(QueueIterator iter);
  * \warning The queue of iterator must be valid.
  * \note queueiterator_value(queueiterator_new(Queue q)) == NULL
  */
-void *queueiterator_value(QueueIterator iter);
+void *queueiterator_value(const QueueIterator iter);
 
 
 

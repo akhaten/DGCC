@@ -29,7 +29,7 @@ stackiterator_next(iter)) \
  * \return an iterator on the stack
  * \pre (s != NULL)
  */
-StackIterator stackiterator_new(Stack s);
+StackIterator stackiterator_new(const Stack s);
 
 
 /**
@@ -58,7 +58,7 @@ StackIterator stackiterator_reset(StackIterator iter);
  * \pre (iter != NULL)
  * \warning The stack of iterator must be valid.
  */
-bool stackiterator_hasnext(StackIterator iter);
+bool stackiterator_hasnext(const StackIterator iter);
 
 
 /**
@@ -89,7 +89,7 @@ StackIterator stackiterator_previous(StackIterator iter);
  * \warning The stack of iterator must be valid.
  * \note stackiterator_value(stackiterator_new(Stack s)) == NULL
  */
-void *stackiterator_value(StackIterator iter);
+GenericElement stackiterator_value(const StackIterator iter);
 
 
 #endif

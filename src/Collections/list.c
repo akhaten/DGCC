@@ -1,16 +1,18 @@
+
 #include "list.h"
 #include "listiterator.h"
+#include "errors.h"
 
 
 typedef struct s_Node {
-  void *value;
+  GenericElement value;
   struct s_Node *previous;
   struct s_Node *next;
 } *Node;
 
 struct s_List {
   Node sentinel;
-  int size;
+  unsigned int size;
   bool mutation;
 };
 
@@ -42,12 +44,12 @@ List list_new(void){
 }
 
 
-void *list_destruct(List l){
+GenericElement list_destruct(List l){
 
   assert( (l != NULL) );
 
   while(!list_isEmpty(l))
-    list_remove(l,0);
+    list_remove(l, 0);
 
   free(l->sentinel);
   l->sentinel = NULL;
@@ -77,7 +79,7 @@ bool list_isEmpty(const List l){
 }
 
 
-List list_add(List l, void *e){
+List list_add(List l, const GenericElement e){
 
   assert( (l != NULL) && (e != NULL) );
 
@@ -124,7 +126,7 @@ List list_remove(List l, const unsigned int index){
 }
 
 
-List list_insert(List l, const unsigned int index, void *e){
+List list_insert(List l, const unsigned int index, const GenericElement e){
 
   assert( (l != NULL) && (e != NULL) && (0 <= index) && (index <= list_size(l)));
   
@@ -153,7 +155,7 @@ List list_insert(List l, const unsigned int index, void *e){
 }
 
 
-void *list_get(const List l, const unsigned int index){
+GenericElement list_get(const List l, const unsigned int index){
 
   assert( (l != NULL) && (!list_isEmpty(l)) && (0 <= index) && (index < list_size(l)) );
 
@@ -167,7 +169,7 @@ void *list_get(const List l, const unsigned int index){
 }
 
 
-List list_map(List l, void* f(void *e)){
+List list_map(List l, FunctionMap f){
   
   assert( (l != NULL) );
 
@@ -177,6 +179,20 @@ List list_map(List l, void* f(void *e)){
   l->mutation = true;
   
   return l;
+
+}
+
+
+GenericElement list_reduce(List l, FunctionReduce f, GenericElement data){
+  
+  assert( (l != NULL) );
+
+  for(Node cur = l->sentinel->next; cur != l->sentinel; cur = cur->next)
+    f(cur->value, data);
+
+  l->mutation = true;
+  
+  return data;
 
 }
 
@@ -205,7 +221,7 @@ List list_sublist(const List l, const unsigned int index1, const unsigned int in
 }
 
 
-bool list_exists(const List l, bool predicate(void *e)){
+bool list_exists(const List l, Predicate p){
 
   assert( (l != NULL) );
 
@@ -213,7 +229,7 @@ bool list_exists(const List l, bool predicate(void *e)){
   int find = false;
   
   while((!find) && (cur != l->sentinel)){
-    find = predicate(cur->value);
+    find = p(cur->value);
     cur = cur->next;
   }
   
@@ -222,7 +238,7 @@ bool list_exists(const List l, bool predicate(void *e)){
 }
 
 
-bool list_forall(const List l, bool predicate(void *e)){
+bool list_forall(const List l, Predicate p){
   
   assert( (l != NULL) );
 
@@ -230,7 +246,7 @@ bool list_forall(const List l, bool predicate(void *e)){
   int check = true;
   
   while((check) && (cur != l->sentinel)){
-    check = predicate(cur->value);
+    check = p(cur->value);
     cur = cur->next;
   }
   
@@ -239,7 +255,7 @@ bool list_forall(const List l, bool predicate(void *e)){
 }
 
 
-List list_copy(List l){
+List list_copy(const List l){
 
   assert( (l != NULL) && (!list_isEmpty(l)) );
 
@@ -259,7 +275,7 @@ struct s_ListIterator {
 };
 
 
-ListIterator listiterator_new(List l){
+ListIterator listiterator_new(const List l){
   
   assert( (l != NULL) );
 
@@ -279,7 +295,7 @@ ListIterator listiterator_new(List l){
 }
 
 
-void *listiterator_destruct(ListIterator iter){
+GenericElement listiterator_destruct(ListIterator iter){
   
   assert( (iter != NULL) );
   
@@ -289,7 +305,7 @@ void *listiterator_destruct(ListIterator iter){
 }
 
 
-bool listiterator_mutation(ListIterator iter){
+bool listiterator_mutation(const ListIterator iter){
   
   assert( (iter != NULL) );
   
@@ -298,7 +314,7 @@ bool listiterator_mutation(ListIterator iter){
 }
 
 
-bool listiterator_isValid(ListIterator iter){
+bool listiterator_isValid(const ListIterator iter){
 
   assert( (iter != NULL) );
   
@@ -318,7 +334,7 @@ ListIterator listiterator_reset(ListIterator iter){
 }
 
 
-bool listiterator_hasnext(ListIterator iter){
+bool listiterator_hasnext(const ListIterator iter){
   
   assert( (iter != NULL) && (!listiterator_mutation(iter)) );
   
@@ -349,7 +365,7 @@ ListIterator listiterator_previous(ListIterator iter){
 }
 
 
-void *listiterator_value(ListIterator iter){
+GenericElement listiterator_value(const ListIterator iter){
 
   assert( (iter != NULL) && (!listiterator_mutation(iter)) );
 

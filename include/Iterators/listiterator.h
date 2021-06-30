@@ -29,7 +29,7 @@ listiterator_next(iter)) \
  * \return an iterator on the list
  * \pre (l != NULL)
  */
-ListIterator listiterator_new(List l);
+ListIterator listiterator_new(const List l);
 
 
 /**
@@ -58,7 +58,7 @@ ListIterator listiterator_reset(ListIterator iter);
  * \pre (iter != NULL)
  * \warning The list of iterator must be valid.
  */
-bool listiterator_hasnext(ListIterator iter);
+bool listiterator_hasnext(const ListIterator iter);
 
 
 /**
@@ -89,6 +89,6 @@ ListIterator listiterator_previous(ListIterator iter);
  * \warning The list of iterator must be valid.
  * \note listiterator_value(listiterator_new(List l)) == NULL
  */
-void *listiterator_value(ListIterator iter);
+void *listiterator_value(const ListIterator iter);
 
 #endif

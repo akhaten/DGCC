@@ -1,17 +1,18 @@
 
 #include "queue.h"
 #include "queueiterator.h"
+#include "errors.h"
 
 
 typedef struct s_Node {
-  void *value;
+  GenericElement value;
   struct s_Node *previous;
   struct s_Node *next;
 } *Node;
 
 struct s_Queue {
   Node sentinel;
-  int size;
+  unsigned int size;
   bool mutation;
 };
 
@@ -43,7 +44,7 @@ Queue queue_new(void){
 }
 
 
-void *queue_destruct(Queue q){
+GenericElement queue_destruct(Queue q){
   
   assert( (q != NULL) );
 
@@ -60,7 +61,7 @@ void *queue_destruct(Queue q){
 }
 
 
-int queue_size(const Queue q){
+unsigned int queue_size(const Queue q){
   
   assert( (q != NULL) );
 
@@ -78,7 +79,7 @@ bool queue_isEmpty(const Queue q){
 }
 
 
-void* queue_top(const Queue q){
+GenericElement queue_top(const Queue q){
 
   assert( (q != NULL) && (!queue_isEmpty(q)) );
 
@@ -87,7 +88,7 @@ void* queue_top(const Queue q){
 }
 
 
-Queue queue_push(Queue q, void *e){
+Queue queue_push(Queue q, const GenericElement e){
 
   assert( (q != NULL) && (e != NULL) );
 
@@ -132,7 +133,7 @@ Queue queue_pop(Queue q){
 }
 
 
-void queue_map(Queue q, void* f(void *e)){
+void queue_map(Queue q, FunctionMap f){
 
   assert( (q != NULL) );
 
@@ -148,7 +149,7 @@ struct s_QueueIterator {
 };
 
 
-QueueIterator queueiterator_new(Queue q){
+QueueIterator queueiterator_new(const Queue q){
   
   assert( (q != NULL) );
 
@@ -168,7 +169,7 @@ QueueIterator queueiterator_new(Queue q){
 }
 
 
-void *queueiterator_destruct(QueueIterator iter){
+GenericElement queueiterator_destruct(QueueIterator iter){
 
   assert( (iter != NULL) );
   
@@ -180,7 +181,7 @@ void *queueiterator_destruct(QueueIterator iter){
 }
 
 
-bool queueiterator_mutation(QueueIterator iter){
+bool queueiterator_mutation(const QueueIterator iter){
   
   assert( (iter != NULL) );
   
@@ -189,7 +190,7 @@ bool queueiterator_mutation(QueueIterator iter){
 }
 
 
-bool queueiterator_isValid(QueueIterator iter){
+bool queueiterator_isValid(const QueueIterator iter){
 
   assert( (iter != NULL) );
   
@@ -209,7 +210,7 @@ QueueIterator queueiterator_reset(QueueIterator iter){
 }
 
 
-bool queueiterator_hasnext(QueueIterator iter){
+bool queueiterator_hasnext(const QueueIterator iter){
   
   assert( (iter != NULL) && (!queueiterator_mutation(iter)) );
   
@@ -240,7 +241,7 @@ QueueIterator queueiterator_previous(QueueIterator iter){
 }
 
 
-void *queueiterator_value(QueueIterator iter){
+GenericElement queueiterator_value(const QueueIterator iter){
 
   assert( (iter != NULL) && (!queueiterator_mutation(iter)) );
 
