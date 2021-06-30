@@ -295,13 +295,14 @@ ListIterator listiterator_new(const List l){
 }
 
 
-GenericElement listiterator_destruct(ListIterator iter){
+void* listiterator_destruct(ListIterator iter){
   
   assert( (iter != NULL) );
   
   free(iter);
   iter = NULL;
   return NULL;
+  
 }
 
 

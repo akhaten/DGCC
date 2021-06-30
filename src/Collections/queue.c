@@ -169,7 +169,7 @@ QueueIterator queueiterator_new(const Queue q){
 }
 
 
-GenericElement queueiterator_destruct(QueueIterator iter){
+void* queueiterator_destruct(QueueIterator iter){
 
   assert( (iter != NULL) );
   

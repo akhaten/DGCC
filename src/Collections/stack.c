@@ -168,7 +168,7 @@ StackIterator stackiterator_new(Stack s){
 }
 
 
-GenericElement stackiterator_destruct(StackIterator iter){
+void* stackiterator_destruct(StackIterator iter){
 
   assert( (iter != NULL) );
   
