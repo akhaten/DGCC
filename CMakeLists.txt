@@ -18,6 +18,7 @@ set(HEADERS
   include/Collections/stack.h
   include/Collections/queue.h
   include/Collections/list.h
+  include/Collections/binarysearchtree.h
 
   include/Iterators/stackiterator.h
   include/Iterators/queueiterator.h
@@ -29,6 +30,7 @@ set(SOURCES
   src/Collections/stack.c
   src/Collections/queue.c
   src/Collections/list.c
+  src/Collections/binarysearchtree.c
 )
 
 add_library(${CMAKE_PROJECT_NAME}

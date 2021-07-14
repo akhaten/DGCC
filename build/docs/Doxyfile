@@ -1,0 +1,10 @@
+PROJECT_NAME           = "DGCC"
+STRIP_FROM_PATH        = /home/jessy/Documents/github-project/DGCC-dev/DGCC/include/
+INPUT                  =  \
+                         /home/jessy/Documents/github-project/DGCC-dev/DGCC \
+                         /home/jessy/Documents/github-project/DGCC-dev/DGCC/build
+FILE_PATTERNS          = *.h *.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+GENERATE_TREEVIEW = YES
+SHOW_USED_FILES = NO
