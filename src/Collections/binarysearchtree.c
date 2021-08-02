@@ -15,22 +15,24 @@ struct s_BSTree {
 
 Node bstree_node_new(const GenericElement value, Node left, Node right){
 
-    Node node = malloc(sizeof(struct s_Node));
+  Node node = malloc(sizeof(struct s_Node));
 
-    if(!node){
-      perror("node_new()");
-      exit(BSTREENODE_INIT);
-    }
-    node->value = value;
-    node->left = left;
-    node->right = right;
-    return node;
+  if(!node){
+    perror("node_new()");
+    exit(BSTREENODE_INIT);
+  }
+  
+  node->value = value;
+  node->left = left;
+  node->right = right;
+  
+  return node;
 
 }
 
 BSTree bstree_new(FunctionCompare fcmp){
   
-  BSTree bst = malloc(sizeof(struct s_BSTree*));
+  BSTree bst = malloc(sizeof(struct s_BSTree));
   
   if(!bst){
     perror("bstree_new()");

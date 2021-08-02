@@ -33,16 +33,16 @@ bool bstree_isEmpty(const BSTree bst);
 
 /**
  * Add a value in binary search tree
- * \param bst   : binary search tree
- * \param value : generic element
+ * \param[in,out] bst   : binary search tree
+ * \param[in] value : generic element
  * \pre (bst != NULL) && (value != NULL)
  */
 void bstree_add(BSTree bst, const GenericElement value);
 
 /**
  * Know if an element is in the binary search tree
- * \param bst   : binary search tree
- * \param value : generic element
+ * \param[in] bst   : binary search tree
+ * \param[in] value : generic element
  * \return true if it is in binary search tree, else false 
  * \pre (bst != NULL) && (value != NULL)
  */
