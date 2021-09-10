@@ -128,7 +128,7 @@ bool list_exists(const List l, Predicate p);
 
 
 /**
- * \brief Check if all elements check the predicat
+ * \brief Check if all elements check the predicate
  * \param[in] l : list
  * \param[in] predicate : predicate returning 0 if false
  * \return 0 if it exists an element e such as predicate(e) == 0
