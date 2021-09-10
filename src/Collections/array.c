@@ -144,3 +144,31 @@ GenericElement array_reduce(Array a, FunctionReduce f, GenericElement data){
   return data;
 
 }
+
+
+bool array_exist(const Array a, Predicate p){
+  
+  assert( (a != NULL) );
+
+  bool token = false;
+
+  for(int index = 0; !token && (index < a->size); ++index)
+    token = p(a->tab[index]);
+
+  return token;
+
+}
+
+
+bool array_forall(const Array a, Predicate p){
+  
+  assert( (a != NULL) );
+
+  bool token = true;
+
+  for(int index = 0; token && (index < a->size); ++index)
+    token = p(a->tab[index]);
+
+  return token;
+
+}
