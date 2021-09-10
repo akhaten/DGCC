@@ -1,3 +1,9 @@
+/**
+ * \author Jessy Khafif
+ * \file array.h
+ */
+
+
 #ifndef __ARRAY_H__
 #define __ARRAY_H__
 
